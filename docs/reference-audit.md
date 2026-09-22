@@ -46,6 +46,12 @@ Page max-width 1600 px, light-theme palette, detailed gray ramp, type weights, s
 
 Inputs have a higher-contrast border, mobile touch targets grow to 44 px, and all data is fictitious. Lucide replaces Vercel's private/icon-specific markup according to the requested stack. The blank deployment image becomes an explicitly labelled neutral placeholder. No Vercel logo, personal avatar, account ID, email, deployment payload, tracking code or authentication script is redistributed.
 
+## OpenAI Suite scrollbar reference
+
+At the owner's request, the current OpenAI Suite implementation was inspected for its scrollbar treatment. Its global pattern uses `scrollbar-width: thin`, an 8 px WebKit scrollbar, a track matching the page background, and a fully rounded thumb with a 2 px border matching the track. The light neutral thumb is `#c9c9c9`; the dark neutral thumb is `#454545`.
+
+The Design System mirrors that geometry and base neutral values through semantic scrollbar tokens so the treatment remains global and theme aware.
+
 ## Approval method
 
 Run the actual React app and Storybook with fonts installed. Compare at known CSS viewport sizes and 100% browser zoom. Check dark/light, hover, focus, active, disabled, loading, empty/error, dialogs, contextual sidebar and reduced motion. Record measured differences and adjust named tokens. Do not apply global zoom to conceal discrepancies.
