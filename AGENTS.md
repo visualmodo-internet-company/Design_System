@@ -22,6 +22,7 @@ Current stage: `0.1.0 foundation-preview`. Build a reliable foundation and one O
 - Preserve the team scope switcher contract in `src/blocks/team-switcher.tsx`: the team label stays visually neutral on hover, only the right chevrons trigger gets hover/open background, and the 384 px desktop panel keeps search, active team, informational area and Create Team footer in that order.
 - Preserve the sidebar search contract in `src/blocks/sidebar-search.tsx`: Find opens a 440 px desktop command panel aligned over the trigger, with a 56 px search header, Esc control and 54 px result rows. Keep keyboard navigation and the Navigation Assistant demo behavior.
 - Scrollbars are global foundation behavior. Follow `docs/scrollbars.md` and the semantic scrollbar tokens; do not invent component specific scrollbar colors.
+- Control height is contextual but deterministic: use 36 px (`--ds-control-md`) for forms, search fields, selects, toolbars and page-level action groups. Use 32 px (`--ds-control-sm`) only for compact actions inside dense containers. Never mix 32 px and 36 px controls in the same toolbar row.
 - Keep React/TypeScript strict, Vite, Tailwind and shadcn-style APIs. Use only Lucide icons.
 - Use semantic CSS variables or their Tailwind aliases. No ad-hoc palette or inline hex in components.
 - Preserve dark and light modes, visible keyboard focus, reduced motion, error/empty/loading/disabled states.
