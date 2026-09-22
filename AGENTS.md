@@ -14,7 +14,7 @@ The Markdown in `docs/` is imported directly by Storybook MDX. Never create an i
 
 ## Release scope
 
-Current stage: `0.1.0 foundation-preview`. Build a reliable foundation and one Overview example. Account, login, billing, settings, list/detail/form templates follow owner approval; do not mass-generate them ahead of that review. The contextual routing view demonstrates patterns, not a production networking page.
+Current stage: `0.2.0 account-reference`. The foundation, Overview, contextual routing example and the approved Account/Settings pages are in scope. Do not invent layouts for additional product pages without supplied references. Account examples remain frontend-only and use neutral fictional identity data.
 
 ## Non-negotiable implementation rules
 
@@ -24,6 +24,7 @@ Current stage: `0.1.0 foundation-preview`. Build a reliable foundation and one O
 - Scrollbars are global foundation behavior. Follow `docs/scrollbars.md` and the semantic scrollbar tokens; do not invent component specific scrollbar colors.
 - Control height is contextual but deterministic: use 36 px (`--ds-control-md`) for forms, search fields, selects, toolbars and page-level action groups. Use 32 px (`--ds-control-sm`) only for compact actions inside dense containers. Never mix 32 px and 36 px controls in the same toolbar row.
 - Dropdown menus follow the Vercel menu contract: 14 px muted section labels, 40 px items, 12 px outer radius, subtle border, full-width separators and selected checks on the right. Do not put selection indicators on the left.
+- Account pages use the `account` ApplicationShell variant and `accountNavigation`. The account sidebar shows Back, Find, primary account destinations, then Settings with persistent text-only child links. Keep supplied Account pages at the shared account width and do not reintroduce project/team context into that shell.
 - Keep React/TypeScript strict, Vite, Tailwind and shadcn-style APIs. Use only Lucide icons.
 - Use semantic CSS variables or their Tailwind aliases. No ad-hoc palette or inline hex in components.
 - Preserve dark and light modes, visible keyboard focus, reduced motion, error/empty/loading/disabled states.
