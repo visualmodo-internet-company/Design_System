@@ -236,6 +236,9 @@
   .ds-nav-link { display: flex; align-items: center; gap: var(--ds-space-2); min-height: var(--ds-navigation-height); width: 100%; padding: 0 var(--ds-space-3); margin-bottom: var(--ds-border-width); border: 0; border-radius: var(--ds-radius-md); color: var(--ds-muted-foreground); background: transparent; text-align: left; font-weight: var(--ds-weight-medium); line-height: var(--ds-leading-label); }
   .ds-nav-link > svg { width: var(--ds-space-4); height: var(--ds-space-4); flex-shrink: 0; }
   .ds-nav-link > .ds-nav-chevron { width: var(--ds-space-3); height: var(--ds-space-3); margin-left: auto; }
+  .ds-nav-link.ds-nav-back { display: grid; grid-template-columns: var(--ds-space-4) minmax(0, 1fr) var(--ds-space-4); align-items: center; gap: var(--ds-space-2); text-align: center; }
+  .ds-nav-link.ds-nav-back::after { content: ''; width: var(--ds-space-4); height: var(--ds-space-4); }
+  .ds-nav-back-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center; }
   .ds-nav-link:hover { background: var(--ds-hover); color: var(--ds-foreground); }
   .ds-nav-link[aria-current='page'] { background: var(--ds-active); color: var(--ds-foreground); }
   .ds-nav-divider { height: var(--ds-border-width); background: var(--ds-border-subtle); border: 0; margin: var(--ds-space-1) 0; }
