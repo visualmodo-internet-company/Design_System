@@ -63,6 +63,18 @@ test('source and generated preview exclude account-export identifiers and secret
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('control heights follow the 36px toolbar and 32px compact rule', () => {
+  const tokens = text('src/styles/tokens.css');
+  const deployment = text('src/blocks/deployment-card.tsx');
+  const overview = text('src/pages/overview-page.tsx');
+  assert(tokens.includes('--ds-control-sm: 32px'));
+  assert(tokens.includes('--ds-control-md: 36px'));
+  assert(deployment.includes('<Button variant="outline"'));
+  assert(!deployment.includes('size="sm" variant="outline" onClick={() => onAction(\'Repository connection'));
+  assert(overview.includes('<Button variant="outline"><Filter'));
+  assert(text('docs/spacing.md').includes('mesma toolbar'));
+});
+
 test('sidebar search and scrollbars preserve the requested visual contracts', () => {
   const styles = text('src/styles/system.css');
   const tokens = text('src/styles/tokens.css');
