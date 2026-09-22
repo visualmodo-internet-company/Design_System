@@ -63,6 +63,19 @@ test('source and generated preview exclude account-export identifiers and secret
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('dropdown menus preserve the Vercel section and selection layout', () => {
+  const source = text('src/components/ui/dropdown-menu.tsx');
+  const styles = text('src/styles/system.css');
+  assert(source.includes('ds-menu-selection'));
+  assert(source.indexOf('ds-menu-item-content') < source.indexOf('ds-menu-selection'));
+  assert(styles.includes('min-height: var(--ds-space-10)'));
+  assert(styles.includes('font-size: var(--ds-font-body)'));
+  assert(styles.includes('.ds-menu-label { padding: 10px 10px 6px;'));
+  assert(styles.includes('.ds-menu-selection { width: var(--ds-space-4);'));
+  assert(styles.includes('margin-left: auto'));
+  assert(styles.includes('border: var(--ds-border-width) solid var(--ds-border)'));
+});
+
 test('control heights follow the 36px toolbar and 32px compact rule', () => {
   const tokens = text('src/styles/tokens.css');
   const deployment = text('src/blocks/deployment-card.tsx');
