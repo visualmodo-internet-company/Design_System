@@ -71,7 +71,7 @@ test('source and generated preview exclude account-export identifiers and secret
 test('account settings preserves the corrected reference geometry', () => {
   const tokens = text('src/styles/tokens.css');
   const styles = text('src/styles/system.css');
-  assert(tokens.includes('--ds-account-width: 928px'));\n  assert(tokens.includes('--ds-account-input-border: #2c2c2c'));
+  assert(tokens.includes('--ds-account-width: 928px'));\n  assert(tokens.includes('--ds-font-account-title: 18px'));\n  assert(tokens.includes('--ds-account-input-border: #2c2c2c'));
   assert(styles.includes(".ds-header[data-variant='account'] { height: var(--ds-header-height); }"));
   assert(styles.includes('.ds-account-stack { display: flex; flex-direction: column; gap: var(--ds-space-8); }'));
   assert(styles.includes('padding: var(--ds-space-6);'));
