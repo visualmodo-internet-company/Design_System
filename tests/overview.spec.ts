@@ -133,12 +133,13 @@ test('account settings matches the reference card geometry and footer alignment'
 
   const displayInput = page.getByRole('textbox', { name: 'Display Name' });
   const borderCheck = await displayInput.evaluate((node) => {
-    const root = getComputedStyle(document.documentElement);
     const input = getComputedStyle(node);
-    return {
-      inputBorder: input.borderTopColor,
-      token: root.getPropertyValue('--ds-account-input-border').trim(),
-    };
+    const probe = document.createElement('span');
+    probe.style.color = 'var(--ds-account-input-border)';
+    document.body.append(probe);
+    const token = getComputedStyle(probe).color;
+    probe.remove();
+    return { inputBorder: input.borderTopColor, token };
   });
   expect(borderCheck.inputBorder).toBe(borderCheck.token);
 
