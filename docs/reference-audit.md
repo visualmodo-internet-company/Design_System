@@ -60,6 +60,21 @@ The later supplied team switcher HTML confirms the desktop composition used by t
 
 The reference also separates the team label action from the scope switcher trigger. That separation is part of the reusable shell contract and should not be collapsed back into one full-width hover button.
 
+## Account Settings measured geometry
+
+A direct comparison between the supplied Settings reference and the first implementation exposed several measurable mismatches. The corrected account contract records the reference geometry rather than inheriting generic card defaults:
+
+* Account header uses the standard 56 px shell height.
+* Settings cards are separated by approximately 32 px.
+* Card content uses 24 px internal padding.
+* Card footer uses a 56 px vertical rhythm and 24 px horizontal padding.
+* Short identity fields are approximately 304 px wide.
+* Settings content uses a 928 px reference width at desktop before responsive clamping.
+* Account form borders use the subtle semantic border instead of the stronger generic input border.
+* Descriptions use the 14 px body scale. Footer help copy uses the 13 px small scale.
+* Footer actions sit at the far right of the footer. They are not part of the help text flow.
+* Direct compact actions inside a card body align to the left rather than stretching to full width.
+
 ## Account page observations
 
 The supplied Account reference set establishes a distinct shell state:
