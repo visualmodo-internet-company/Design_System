@@ -15,6 +15,18 @@ The private Vercel application source was not accessed. Public compiled CSS link
 - Controls transition over 150 ms, contextual sidebar over 200 ms.
 - Card padding 16 px, main gap 24 px, deployment preview width 400 px at its large container breakpoint.
 
+## Control height measurements
+
+Later dashboard screenshots with DevTools overlays provide direct control-height evidence:
+
+* Search Projects measured 35.99 px, treated as the 36 px default control.
+* Add New measured 35.99 px.
+* Create Flag in the page toolbar measured 35.99 px.
+* Marketplace provider Create measured 31.99 px inside a bordered provider row.
+* Push Notifications Enable measured 31.99 px inside its compact card.
+
+The resulting control contract is contextual rather than one universal button size. Inputs, search fields, selects and page-level toolbar actions use 36 px. Compact actions inside an already bounded dense container use 32 px. Controls sharing one toolbar row must use the same height.
+
 ## Team scope switcher measurements
 
 The later supplied team switcher HTML confirms the desktop composition used by the sidebar:
