@@ -63,6 +63,19 @@ test('source and generated preview exclude account-export identifiers and secret
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('sidebar search and scrollbars preserve the requested visual contracts', () => {
+  const styles = text('src/styles/system.css');
+  const tokens = text('src/styles/tokens.css');
+  const source = text('src/blocks/sidebar-search.tsx');
+  assert(styles.includes('width: min(440px, calc(100vw - var(--ds-space-4)))'));
+  assert(styles.includes('min-height: 54px'));
+  assert(styles.includes('*::-webkit-scrollbar { width: 8px; height: 8px; }'));
+  assert(styles.includes('border: 2px solid var(--ds-scrollbar-track)'));
+  assert(tokens.includes('--ds-scrollbar-thumb: #454545'));
+  assert(source.includes('Navigation Assistant'));
+  assert(source.includes('sideOffset={-36}'));
+});
+
 test('team switcher preserves the measured Vercel scope interaction contract', () => {
   const styles = text('src/styles/system.css');
   const source = text('src/blocks/team-switcher.tsx');
