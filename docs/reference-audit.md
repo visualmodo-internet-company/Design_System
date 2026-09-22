@@ -71,7 +71,7 @@ A direct comparison between the supplied Settings reference and the first implem
 * Short identity fields are approximately 304 px wide.
 * Settings content uses a 928 px reference width at desktop before responsive clamping.
 * Account form borders use the subtle semantic border instead of the stronger generic input border.
-* Account card titles use the 18 px reference scale. Descriptions and footer help copy use the 13 px small scale.
+* Account card titles use the supplied `text-heading-20` reference: 20 px, 28 px line-height, 600 weight and approximately -0.01em tracking. Descriptions and footer help copy use the supplied `text-copy-14` reference: 14 px, 20 px line-height, 400 weight and approximately -0.006em tracking.
 * Footer actions sit at the far right of the footer. They are not part of the help text flow.
 * Direct compact actions inside a card body align to the left rather than stretching to full width.
 
