@@ -68,6 +68,19 @@ test('source and generated preview exclude account-export identifiers and secret
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('account settings preserves the corrected reference geometry', () => {
+  const tokens = text('src/styles/tokens.css');
+  const styles = text('src/styles/system.css');
+  assert(tokens.includes('--ds-account-width: 928px'));
+  assert(styles.includes(".ds-header[data-variant='account'] { height: var(--ds-header-height); }"));
+  assert(styles.includes('.ds-account-stack { display: flex; flex-direction: column; gap: var(--ds-space-8); }'));
+  assert(styles.includes('padding: var(--ds-space-6);'));
+  assert(styles.includes('.ds-account-short-field { width: min(100%, 304px); }'));
+  assert(styles.includes('.ds-account-card .ds-input,'));
+  assert(styles.includes('border-color: var(--ds-border); background: var(--ds-background);'));
+  assert(text('src/pages/account-pages.tsx').includes('action={<Button size="sm"'));
+});
+
 test('account navigation keeps the supplied settings destinations in a reusable shell', () => {
   const navigation = text('src/fixtures/account-navigation.ts');
   const sidebar = text('src/blocks/sidebar.tsx');
