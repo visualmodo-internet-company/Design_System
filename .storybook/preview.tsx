@@ -16,7 +16,7 @@ const preview: Preview = {
       desktop: { name: 'Desktop · 1440', styles: { width: '1440px', height: '1000px' }, type: 'desktop' },
     } },
     options: { storySort: { order: ['Design System', 'Foundations', 'Components', 'Patterns', 'Layouts', 'Pages', 'AI Guidelines'] } },
-    docs: { codePanel: true, story: { inline: false } },
+    docs: { codePanel: true, story: { inline: true } },
   },
 };
 export default preview;
