@@ -336,13 +336,13 @@ function BillingItemsPage({ onAction }: { onAction: Notify }) {
       <section><h1 className="ds-account-section-title">Personal</h1>
         <div className="ds-account-billing-item">
           <div className="ds-account-billing-item-top"><div><strong className="ds-account-plan-name">V0 Plan</strong><Badge>Free</Badge></div></div>
-          <FooterLine action={<Button variant="outline" onClick={() => onAction('Billing settings demonstrated.')}>View Billing Settings</Button>}>Learn more by visiting v0's <a className="ds-link" href="#pricing" onClick={(event) => event.preventDefault()}>pricing page <ExternalLink aria-hidden="true" /></a>.</FooterLine>
+          <FooterLine action={<Button size="sm" variant="outline" onClick={() => onAction('Billing settings demonstrated.')}>View Billing Settings</Button>}>Learn more by visiting v0's <a className="ds-link" href="#pricing" onClick={(event) => event.preventDefault()}>pricing page <ExternalLink aria-hidden="true" /></a>.</FooterLine>
         </div>
       </section>
       <section><h2 className="ds-account-section-title">Teams</h2>
         <div className="ds-account-billing-item">
           <div className="ds-account-billing-item-top"><div className="ds-row"><span className="ds-team-avatar-mark" aria-hidden="true" /><strong className="ds-account-plan-name">{account.team}</strong><Badge>Hobby</Badge><Badge variant="success">Active</Badge></div></div>
-          <FooterLine action={<Button variant="outline" onClick={() => onAction('Team billing settings demonstrated.')}>View Billing Settings</Button>}>Visit {account.team}'s billing settings for details.</FooterLine>
+          <FooterLine action={<Button size="sm" variant="outline" onClick={() => onAction('Team billing settings demonstrated.')}>View Billing Settings</Button>}>Visit {account.team}'s billing settings for details.</FooterLine>
         </div>
       </section>
     </div>
