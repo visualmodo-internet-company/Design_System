@@ -6,6 +6,17 @@ test('overview composes the shared shell with semantic headings', async ({ page 
   await expect(page.getByRole('heading', { name: 'Production deployment', exact: false })).toBeVisible();
   await expect(page.getByRole('main')).toHaveCount(1);
 });
+test('page-level controls use 36px while compact card actions use 32px', async ({ page }) => {
+  const height = async (locator: ReturnType<typeof page.getByRole>) => Math.round((await locator.boundingBox())?.height ?? 0);
+  expect(await height(page.getByRole('searchbox', { name: 'Search branches' }))).toBe(36);
+  expect(await height(page.getByRole('button', { name: /Status/ }))).toBe(36);
+  expect(await height(page.getByRole('button', { name: 'Connect Git' }))).toBe(36);
+  expect(await height(page.getByRole('button', { name: 'Instant rollback' }))).toBe(36);
+  expect(await height(page.getByRole('button', { name: 'Visit', exact: true }))).toBe(36);
+  expect(await height(page.getByRole('button', { name: 'Enable analytics' }))).toBe(32);
+  expect(await height(page.getByRole('button', { name: 'Documentation' }))).toBe(32);
+});
+
 test('branch search recovers from an empty result', async ({ page }) => {
   await page.getByRole('searchbox', { name: 'Search branches' }).fill('not-a-real-branch');
   await expect(page.getByRole('heading', { name: 'No matching branches' })).toBeVisible();
