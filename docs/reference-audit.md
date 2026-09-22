@@ -2,7 +2,7 @@
 
 ## Scope and provenance
 
-Reference date: 2026-09-22. Six dashboard screenshots and one exported HTML were supplied by the owner. Public Vercel Geist Colors, Typography, Introduction and Font pages were consulted on that date. The current public shadcn Button source was inspected (reported modified 2026-09-04).
+Reference date: 2026-09-22. Dashboard screenshots plus exported HTML for the shell and team scope switcher were supplied by the owner. Public Vercel Geist Colors, Typography, Introduction and Font pages were consulted on that date. The current public shadcn Button source was inspected (reported modified 2026-09-04).
 
 The private Vercel application source was not accessed. Public compiled CSS links in the supplied HTML could not be downloaded in this environment. The HTML contains some values directly but does not contain all computed styles. Screenshots show one theme and some loading states; they do not prove all interaction trajectories.
 
@@ -14,6 +14,25 @@ The private Vercel application source was not accessed. Public compiled CSS link
 - Main text 14 px with 24 px line height, icons commonly 16 px.
 - Controls transition over 150 ms, contextual sidebar over 200 ms.
 - Card padding 16 px, main gap 24 px, deployment preview width 400 px at its large container breakpoint.
+
+## Team scope switcher measurements
+
+The later supplied team switcher HTML confirms the desktop composition used by the sidebar:
+
+* Top scope row uses a 40 px content height.
+* Team avatar is 20 px and circular.
+* The plan badge is 20 px high with 11 px text.
+* The chevrons icon is 16 px.
+* The hover/active background belongs only to the chevrons trigger, not the team label area.
+* The Find control below the team row is 36 px high.
+* Desktop switcher content uses a 384 px width.
+* The team search input area is 40 px high with a bottom border.
+* The results scroller is 250 px high.
+* The informational empty area has a 196 px minimum height.
+* The footer has 6 px outer padding and a top border.
+* The active team row contains the 20 px avatar, team name, plan badge and selected check indicator.
+
+The reference also separates the team label action from the scope switcher trigger. That separation is part of the reusable shell contract and should not be collapsed back into one full-width hover button.
 
 ## Observed in screenshot pixels
 
