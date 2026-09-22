@@ -32,8 +32,22 @@ Composição de PageHeader e children, para ser usada dentro do shell. Não gera
 
 É a primeira página de exemplo: DeploymentCard, checklist, métricas ilustrativas, empty state de analytics, toolbar e branch. Seus dados ficam em `src/fixtures/overview.json`, nunca no primitive. Network demonstra submenu contextual e os estados vazio/carregamento.
 
+## Account shell
+
+O mesmo ApplicationShell possui a variante `account`. Ela remove o seletor de projeto e os controles de Agent/theme do header, usa título centralizado e troca a parte superior da sidebar por Back + Find.
+
+A navegação de account mantém Overview, Domains, Activity, Invites e Support como destinos primários. Settings permanece visível com subitens textuais persistentes: Authentication, Sign in with Vercel, Billing Information, Billing Items, Invoices e Tokens. O shell não usa o comportamento contextual de substituir toda a navegação quando um subitem está ativo.
+
+As páginas fornecidas usam largura central de `--ds-account-width` e reutilizam o contrato 36 px para forms e 32 px para ações compactas dentro de cards. As referências reais de conta nunca são copiadas para fixtures públicas; exemplos usam identidade e emails fictícios.
+
+## Account reference pages
+
+A página Settings demonstra cards de avatar, identidade, team, email, telefone, ID, reset e ação destrutiva. Authentication demonstra listas de métodos e 2FA. Sign in with Vercel demonstra search/filter e uma conexão. Billing Information demonstra cards de formulário. Billing Items demonstra billing por Personal/Teams. Invoices demonstra select + empty state. Tokens demonstra criação, tabs e tabela.
+
+Destinos account sem screenshot próprio continuam como placeholders de shell, em vez de inventar layouts.
+
 ## Next layouts
 
-Account/Settings, Authentication, List, Details e Form serão adicionados depois da aprovação visual desta fundação. Não são entregues como páginas completas nesta etapa.
+List, Details e Form genéricos continuam dependendo de referências ou necessidade real do consumidor.
 
 `workspacePlan` is optional: a consumer decides whether a plan badge is relevant. User avatar initials derive from `userName`; neither an account identity nor a subscription tier is hardcoded into the reusable Sidebar. The example fixture supplies its own name and Hobby label.
