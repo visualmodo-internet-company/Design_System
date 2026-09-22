@@ -15,6 +15,20 @@ The private Vercel application source was not accessed. Public compiled CSS link
 - Controls transition over 150 ms, contextual sidebar over 200 ms.
 - Card padding 16 px, main gap 24 px, deployment preview width 400 px at its large container breakpoint.
 
+## Dropdown menu observations
+
+The supplied Vercel screenshots establish a consistent dropdown pattern across Appearance and project filters:
+
+* Section labels such as Appearance, Filter by, Sort by and Preferences use the normal 14 px interface scale with muted color rather than caption sized text.
+* Menu rows use an approximately 40 px vertical rhythm.
+* Selected radio and checkbox indicators sit at the far right of the row.
+* Icons remain on the left next to item text.
+* Section separators extend through the menu interior rather than behaving like short item borders.
+* The dark menu uses the regular subtle border, 12 px outer radius and compact inner radius for highlighted rows.
+* Highlight belongs to the active or hovered row; selection itself is communicated by the right aligned check.
+
+These rules are implemented in the shared Dropdown Menu and Select primitives so theme, status, filters and future menus inherit the same behavior.
+
 ## Control height measurements
 
 Later dashboard screenshots with DevTools overlays provide direct control-height evidence:
