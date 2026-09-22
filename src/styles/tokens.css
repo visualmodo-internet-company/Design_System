@@ -15,7 +15,7 @@
   --ds-popover-width: 240px; --ds-dialog-width: 480px; --ds-sheet-width: 360px;
   --ds-metric-label-width: 144px; --ds-reading-width: 720px; --ds-form-width: 480px;
   --ds-account-width: 928px; --ds-account-wide: 1040px; --ds-account-row-height: 56px;
-  --ds-font-caption: 12px; --ds-font-small: 13px; --ds-font-body: 14px; --ds-font-large: 16px;
+  --ds-font-caption: 12px; --ds-font-small: 13px; --ds-font-body: 14px; --ds-font-large: 16px; --ds-font-account-title: 18px;
   --ds-font-h4: 16px; --ds-font-h3: 20px; --ds-font-h2: 24px; --ds-font-h1: 32px;
   --ds-leading-caption: 16px; --ds-leading-label: 20px; --ds-leading-body: 24px;
   --ds-leading-h3: 28px; --ds-leading-h2: 32px; --ds-leading-h1: 40px;
