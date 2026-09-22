@@ -71,13 +71,13 @@ test('source and generated preview exclude account-export identifiers and secret
 test('account settings preserves the corrected reference geometry', () => {
   const tokens = text('src/styles/tokens.css');
   const styles = text('src/styles/system.css');
-  assert(tokens.includes('--ds-account-width: 928px'));
+  assert(tokens.includes('--ds-account-width: 928px'));\n  assert(tokens.includes('--ds-account-input-border: #2c2c2c'));
   assert(styles.includes(".ds-header[data-variant='account'] { height: var(--ds-header-height); }"));
   assert(styles.includes('.ds-account-stack { display: flex; flex-direction: column; gap: var(--ds-space-8); }'));
   assert(styles.includes('padding: var(--ds-space-6);'));
   assert(styles.includes('.ds-account-short-field { width: min(100%, 304px); }'));
   assert(styles.includes('.ds-account-card .ds-input,'));
-  assert(styles.includes('border-color: var(--ds-border); background: var(--ds-background);'));
+  assert(styles.includes('border-color: var(--ds-account-input-border); background: var(--ds-background);'));
   assert(text('src/pages/account-pages.tsx').includes('action={<Button size="sm"'));
 });
 
