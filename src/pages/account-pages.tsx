@@ -265,7 +265,7 @@ function SignInPage({ onAction }: { onAction: Notify }) {
         <p>Use your Vercel account to log in to third-party applications. <a href="#learn" className="ds-link" onClick={(event) => event.preventDefault()}>Learn More <ExternalLink aria-hidden="true" /></a></p>
       </div>
       <div className="ds-account-toolbar">
-        <div className="ds-search"><Search aria-hidden="true" /><Input aria-label="Filter applications" placeholder="Filter..." value={query} onChange={(event) => setQuery(event.target.value)} /></div>
+        <div className="ds-search"><Search aria-hidden="true" /><Input type="search" aria-label="Filter applications" placeholder="Filter..." value={query} onChange={(event) => setQuery(event.target.value)} /></div>
         <Select defaultValue="all"><SelectTrigger aria-label="Connection status"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All</SelectItem><SelectItem value="connected">Connected</SelectItem></SelectContent></Select>
       </div>
       {visible && <div className="ds-account-connected-row">
