@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { Check, Globe2, Plus, Users, X } from 'lucide-react';
+import { Check, ChevronsUpDown, Globe2, Plus, Users, X } from 'lucide-react';
 import { Popover as Primitive } from 'radix-ui';
 import { Badge } from '@/components/ui/badge';
 
@@ -9,19 +9,6 @@ export interface TeamSwitcherProps {
   onOpenTeam: () => void;
   onSelectTeam: () => void;
   onCreateTeam: () => void;
-}
-
-function ScopeChevron() {
-  return (
-    <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M8.7 2.4a1 1 0 0 0-1.4 0L4.46 5.22l-.53.53L5 6.81l.53-.53L8 3.81l2.47 2.47.53.53 1.06-1.06-.53-.53zM5.54 9.72 5 9.19l-1.06 1.06.53.53 2.82 2.82a1 1 0 0 0 1.42 0l2.82-2.82.53-.53L11 9.19l-.53.53L8 12.19z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
 }
 
 function TeamMark() {
@@ -56,7 +43,7 @@ export function TeamSwitcher({ team, plan, onOpenTeam, onSelectTeam, onCreateTea
           </button>
           <Primitive.Trigger asChild>
             <button type="button" className="ds-team-trigger" aria-label="Switch team">
-              <ScopeChevron />
+              <ChevronsUpDown aria-hidden="true" />
             </button>
           </Primitive.Trigger>
         </div>
