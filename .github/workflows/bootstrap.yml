@@ -1,0 +1,78 @@
+name: Bootstrap Design System
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - seed/READY
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: bootstrap-design-system
+  cancel-in-progress: false
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout seed repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Restore project
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat seed/part-* > /tmp/design-system.b64
+          base64 --decode /tmp/design-system.b64 > /tmp/design-system.tar.xz
+          mkdir -p /tmp/design-system
+          tar -xJf /tmp/design-system.tar.xz -C /tmp/design-system
+          cp -a /tmp/design-system/Design_System/. .
+          rm -rf seed
+          rm -f .github/workflows/bootstrap.yml
+
+      - name: Commit restored source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Bootstrap Design System"
+          git push origin HEAD:main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run source contracts
+        run: npm run test
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Storybook artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: storybook-static
+
+      - name: Deploy Storybook
+        id: deployment
+        uses: actions/deploy-pages@v4
