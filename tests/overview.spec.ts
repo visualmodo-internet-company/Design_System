@@ -118,6 +118,52 @@ test('account pages do not expose personal account export identifiers', async ({
   expect(text).not.toContain('dpl_');
 });
 
+test('account submenu typography exactly matches the primary sidebar item typography', async ({ page }) => {
+  await page.getByRole('button', { name: 'Open user menu' }).click();
+  await page.getByRole('menuitem', { name: 'Account settings' }).click();
+
+  const primary = page.getByRole('link', { name: 'Overview', exact: true });
+  const child = page.getByRole('link', { name: 'Authentication', exact: true });
+  const styles = async (locator: ReturnType<typeof page.getByRole>) => locator.evaluate((node) => {
+    const css = getComputedStyle(node);
+    return {
+      family: css.fontFamily,
+      size: css.fontSize,
+      weight: css.fontWeight,
+      lineHeight: css.lineHeight,
+      letterSpacing: css.letterSpacing,
+    };
+  });
+  expect(await styles(child)).toEqual(await styles(primary));
+});
+
+test('account Settings typography follows the supplied Geist heading and copy classes', async ({ page }) => {
+  await page.getByRole('button', { name: 'Open user menu' }).click();
+  await page.getByRole('menuitem', { name: 'Account settings' }).click();
+
+  const title = page.getByRole('heading', { name: 'Display Name' });
+  const description = page.getByText('Please enter your full name, or a display name you are comfortable with.');
+  const footerCopy = page.getByText('Please use 32 characters at maximum.');
+
+  const titleStyle = await title.evaluate((node) => {
+    const css = getComputedStyle(node);
+    return { size: css.fontSize, weight: css.fontWeight, lineHeight: css.lineHeight, letterSpacing: css.letterSpacing };
+  });
+  expect(titleStyle.size).toBe('20px');
+  expect(titleStyle.weight).toBe('600');
+  expect(titleStyle.lineHeight).toBe('28px');
+
+  for (const locator of [description, footerCopy]) {
+    const copyStyle = await locator.evaluate((node) => {
+      const css = getComputedStyle(node);
+      return { size: css.fontSize, weight: css.fontWeight, lineHeight: css.lineHeight };
+    });
+    expect(copyStyle.size).toBe('14px');
+    expect(copyStyle.weight).toBe('400');
+    expect(copyStyle.lineHeight).toBe('20px');
+  }
+});
+
 test('account settings matches the reference card geometry and footer alignment', async ({ page }) => {
   await page.getByRole('button', { name: 'Open user menu' }).click();
   await page.getByRole('menuitem', { name: 'Account settings' }).click();
