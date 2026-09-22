@@ -40,7 +40,7 @@ A navegação de account mantém Overview, Domains, Activity, Invites e Support 
 
 As páginas fornecidas usam largura central de `--ds-account-width` e reutilizam o contrato 36 px para forms e 32 px para ações compactas dentro de cards. As referências reais de conta nunca são copiadas para fixtures públicas; exemplos usam identidade e emails fictícios.
 
-Para Settings, `--ds-account-width` é 928 px no desktop. O header de Account permanece em 56 px. Cards usam 24 px de padding, 32 px entre cards e footer de 56 px. Inputs e selects dentro de Account usam a borda semântica sutil, não `--ds-input-border`, para reproduzir a densidade visual da referência.
+Para Settings, `--ds-account-width` é 928 px no desktop. O header de Account permanece em 56 px. Cards usam 24 px de padding, 32 px entre cards e footer de 56 px. Títulos internos de card seguem `text-heading-20`: 20/28, peso 600. Descrições, footers e labels comuns seguem `text-copy-14`: 14/20, peso 400. A navegação e os subitens de Settings compartilham a mesma tipografia de interface: 14/20, peso 500. Inputs e selects dentro de Account usam a borda semântica específica de Account, não `--ds-input-border`.
 
 ## Account reference pages
 
