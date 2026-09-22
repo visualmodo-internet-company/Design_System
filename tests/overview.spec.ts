@@ -8,7 +8,7 @@ test('overview composes the shared shell with semantic headings', async ({ page 
 });
 test('page-level controls use 36px while compact card actions use 32px', async ({ page }) => {
   const height = async (locator: ReturnType<typeof page.getByRole>) => Math.round((await locator.boundingBox())?.height ?? 0);
-  expect(await height(page.getByRole('searchbox', { name: 'Search branches' }))).toBe(36);
+  expect(await height(page.locator('.ds-toolbar .ds-search'))).toBe(36);
   expect(await height(page.getByRole('button', { name: /Status/ }))).toBe(36);
   expect(await height(page.getByRole('button', { name: 'Connect Git' }))).toBe(36);
   expect(await height(page.getByRole('button', { name: 'Instant rollback' }))).toBe(36);
