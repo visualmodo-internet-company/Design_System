@@ -101,7 +101,7 @@
       "use": "Alternativas com valores e rótulos claros.",
       "avoid": "Campo pesquisável muito grande sem combobox apropriado.",
       "accessibility": "Trigger com aria-label ou Label; navegação, foco e Escape pelo primitive.",
-      "ai": "Importar o componente existente; compor com tokens semânticos; não recriar o primitive nem inventar variantes."
+      "ai": "Importar o componente existente; o menu compartilha a mesma geometria de item e indicador à direita do Dropdown Menu; não recriar o primitive."
     },
     {
       "name": "Card",
@@ -205,11 +205,11 @@
       "export": "DropdownMenu",
       "story": "stories/components/dropdown-menu.stories.tsx",
       "status": "implemented-unverified-runtime",
-      "description": "Menu de ações de contexto.",
-      "use": "Ações de overflow e seleção de aparência.",
-      "avoid": "Substituir um Select de formulário.",
+      "description": "Menu de contexto e seleção com seções, labels discretos e indicador selecionado alinhado à direita.",
+      "use": "Ações de overflow, seleção de aparência, filtros e preferências agrupadas por labels e separators.",
+      "avoid": "Não usar check à esquerda nem compactar items abaixo do ritmo visual do menu.",
       "accessibility": "Trigger nomeado; foco, setas, Escape e retorno geridos pelo primitive.",
-      "ai": "Importar o componente existente; compor com tokens semânticos; não recriar o primitive nem inventar variantes."
+      "ai": "Itens usam 40 px, labels usam 14 px muted, selection check fica à direita e separators atravessam o menu; reutilize o primitive existente."
     },
     {
       "name": "Dialog",
