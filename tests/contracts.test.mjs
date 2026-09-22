@@ -83,6 +83,14 @@ test('account settings preserves the corrected reference geometry', () => {
   assert(text('src/pages/account-pages.tsx').includes('action={<Button size="sm"'));
 });
 
+test('account settings submenu uses the same 14px interface scale as the reference', () => {
+  const styles = text('src/styles/system.css');
+  assert(styles.includes('.ds-nav-subitem {'));
+  assert(styles.includes('font-size: var(--ds-font-body)'));
+  assert(styles.includes('line-height: var(--ds-leading-label)'));
+  assert(styles.includes('font-weight: var(--ds-weight-regular)'));
+});
+
 test('account navigation keeps the supplied settings destinations in a reusable shell', () => {
   const navigation = text('src/fixtures/account-navigation.ts');
   const sidebar = text('src/blocks/sidebar.tsx');
