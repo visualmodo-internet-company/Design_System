@@ -17,6 +17,13 @@ O painel abre alinhado à esquerda da sidebar com 384 px no desktop. Ele contém
 
 A ação do nome do team é separada do botão que abre o seletor, reproduzindo o comportamento de contexto da referência. Consumers podem mapear `onOpenTeam`, `onSelectTeam` e `onCreateTeam` para router ou ações reais sem alterar a composição visual.
 
+
+### Sidebar search
+
+O botão Find da sidebar abre um painel de busca no mesmo eixo visual do seletor de team. O painel começa sobre a posição do próprio controle de busca, tem largura desktop de 440 px, cabeçalho de 56 px com ícone, input e Esc, e lista de resultados com linhas de 54 px.
+
+O componente canônico fica em `src/blocks/sidebar-search.tsx`. Ele inclui resultados de team, project, navegação e um Navigation Assistant demonstrativo. Busca, Arrow Up, Arrow Down, Enter e Escape funcionam sem mouse. Consumers devem conectar callbacks reais sem recriar o painel.
+
 ## Content Layout
 
 Composição de PageHeader e children, para ser usada dentro do shell. Não gera outra sidebar, outro header global nem outro `main`. Pode receber ações junto do título.
