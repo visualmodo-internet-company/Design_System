@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { Check, Globe2, Plus, Users } from 'lucide-react';
+import { Check, Globe2, Plus, Users, X } from 'lucide-react';
 import { Popover as Primitive } from 'radix-ui';
 import { Badge } from '@/components/ui/badge';
 
@@ -86,7 +86,8 @@ export function TeamSwitcher({ team, plan, onOpenTeam, onSelectTeam, onCreateTea
               onChange={(event) => setQuery(event.target.value)}
             />
             <button type="button" className="ds-team-close" aria-label="Close team switcher" onClick={() => setOpen(false)}>
-              <kbd className="ds-kbd">Esc</kbd>
+              <kbd className="ds-kbd ds-team-close-kbd">Esc</kbd>
+              <X className="ds-team-close-x" aria-hidden="true" />
             </button>
           </div>
 
