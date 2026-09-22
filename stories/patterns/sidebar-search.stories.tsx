@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, type ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 import { SidebarSearch } from '@/blocks/sidebar-search';
 import { demoNavigation } from '@/fixtures/navigation';
 
-function Demo(args: Omit<React.ComponentProps<typeof SidebarSearch>, 'open' | 'onOpenChange'>) {
+function Demo(args: Omit<ComponentProps<typeof SidebarSearch>, 'open' | 'onOpenChange'>) {
   const [open, setOpen] = useState(true);
   return (
     <div style={{ width: 256, minHeight: 520, padding: 8, background: 'var(--ds-background)' }}>
