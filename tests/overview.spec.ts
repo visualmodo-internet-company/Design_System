@@ -6,6 +6,33 @@ test('overview composes the shared shell with semantic headings', async ({ page 
   await expect(page.getByRole('heading', { name: 'Production deployment', exact: false })).toBeVisible();
   await expect(page.getByRole('main')).toHaveCount(1);
 });
+test('dropdown labels and selected indicators follow the Vercel menu geometry', async ({ page }) => {
+  await page.getByRole('button', { name: 'Change theme' }).click();
+  const menu = page.getByRole('menu');
+  await expect(menu).toBeVisible();
+  const label = menu.locator('.ds-menu-label');
+  await expect(label).toHaveText('Appearance');
+  expect(await label.evaluate((node) => getComputedStyle(node).fontSize)).toBe('14px');
+  const selected = menu.getByRole('menuitemradio', { name: 'Dark' });
+  expect(Math.round((await selected.boundingBox())?.height ?? 0)).toBe(40);
+  const geometry = await selected.evaluate((item) => {
+    const content = item.querySelector('.ds-menu-item-content');
+    const selection = item.querySelector('.ds-menu-selection');
+    if (!(content instanceof HTMLElement) || !(selection instanceof HTMLElement)) return null;
+    const contentRect = content.getBoundingClientRect();
+    const selectionRect = selection.getBoundingClientRect();
+    return { contentRight: contentRect.right, selectionLeft: selectionRect.left };
+  });
+  expect(geometry).not.toBeNull();
+  expect((geometry?.selectionLeft ?? 0)).toBeGreaterThan(geometry?.contentRight ?? 0);
+  await page.keyboard.press('Escape');
+
+  await page.getByRole('button', { name: /Status/ }).click();
+  const statusItem = page.getByRole('menuitemradio', { name: 'All statuses' });
+  await expect(statusItem).toHaveAttribute('data-state', 'checked');
+  expect(Math.round((await statusItem.boundingBox())?.height ?? 0)).toBe(40);
+});
+
 test('page-level controls use 36px while compact card actions use 32px', async ({ page }) => {
   const height = async (locator: ReturnType<typeof page.getByRole>) => Math.round((await locator.boundingBox())?.height ?? 0);
   expect(await height(page.locator('.ds-toolbar .ds-search'))).toBe(36);
