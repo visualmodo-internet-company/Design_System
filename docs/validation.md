@@ -2,17 +2,17 @@
 
 ## Current status
 
-Stage: **0.1.0 foundation preview**
+Stage: **0.2.0 account reference**
 
 Public repository: https://github.com/visualmodo-internet-company/Design_System
 
 Public Storybook: https://visualmodo-internet-company.github.io/Design_System/
 
-The repository is public and GitHub Pages is configured to deploy Storybook with GitHub Actions.
+The repository is public and GitHub Pages deploys Storybook with GitHub Actions.
 
 ## Remote validation completed
 
-The GitHub Actions validation workflow completed successfully on 2026-09-22.
+The latest complete validation workflow passed on 2026-09-22 for commit `b88280345e1630e459ced2f622c2bbd281ef95fa`.
 
 | Check | Result |
 | --- | --- |
@@ -24,28 +24,39 @@ The GitHub Actions validation workflow completed successfully on 2026-09-22.
 | Storybook production build | Passed |
 | Chromium installation | Passed |
 | Playwright interaction tests | Passed |
+| Account page navigation tests | Passed |
 | Automated accessibility scan | Passed |
 | GitHub Pages Storybook build | Passed |
 | GitHub Pages deployment | Passed |
 
-The first browser run exposed one incorrect test locator. The branch search input is semantically a `searchbox`, not a generic `textbox`. The test was corrected and the complete validation workflow then passed.
+The browser suite now checks the shared shell, control heights, dropdown geometry, team switcher, sidebar search, contextual navigation, account sidebar navigation, all approved Account/Settings destinations, sanitized example identity data and the existing WCAG 2 AA overview scan.
+
+## Account reference coverage
+
+The approved account reference set includes:
+
+* Settings
+* Authentication
+* Sign in with Vercel
+* Billing Information
+* Billing Items
+* Invoices
+* Tokens
+
+These pages use the shared `account` ApplicationShell variant and the persistent Account sidebar navigation. Identity, email, IDs, access rows and billing data are fictional examples. The supplied personal screenshots are not stored in the repository.
+
+Account destinations visible in the supplied sidebar but without their own page screenshot remain shell placeholders rather than invented product layouts.
 
 ## Storybook deployment
 
-The latest verified Pages deployment was created from commit `e6f625e51d1182f943a9c31027e86858c3b96277`.
+The verified Pages deployment was built from commit `b88280345e1630e459ced2f622c2bbd281ef95fa`.
 
-The deployment workflow completed its build, Pages configuration, artifact upload and deployment jobs successfully.
-
-## Foundation coverage
-
-The current catalog contains the initial reusable UI primitives, foundations, patterns, layouts, documentation for humans and AI agents, and the Overview example page.
-
-Account and additional standard pages are intentionally deferred until the visual foundation is reviewed.
+The deployment workflow completed Storybook build, Pages configuration, artifact upload and deployment successfully.
 
 ## Remaining release work
 
-A genuine `package-lock.json` should be generated and committed before adopting `npm ci` as the default installation command.
+A genuine `package-lock.json` should be generated and committed before adopting `npm ci` as the only installation command.
 
-Pixel perfect equivalence with the Vercel dashboard is not yet claimed. The current implementation is the first visual foundation and should continue to be refined against approved references.
+The implementation is an independent Design System reference guided by supplied screenshots. Human visual review remains authoritative for fine-grained spacing and pixel-level adjustments.
 
 See `docs/reference-audit.md` for measurements, estimates and visual provenance.
