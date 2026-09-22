@@ -40,6 +40,8 @@ A navegação de account mantém Overview, Domains, Activity, Invites e Support 
 
 As páginas fornecidas usam largura central de `--ds-account-width` e reutilizam o contrato 36 px para forms e 32 px para ações compactas dentro de cards. As referências reais de conta nunca são copiadas para fixtures públicas; exemplos usam identidade e emails fictícios.
 
+Para Settings, `--ds-account-width` é 928 px no desktop. O header de Account permanece em 56 px. Cards usam 24 px de padding, 32 px entre cards e footer de 56 px. Inputs e selects dentro de Account usam a borda semântica sutil, não `--ds-input-border`, para reproduzir a densidade visual da referência.
+
 ## Account reference pages
 
 A página Settings demonstra cards de avatar, identidade, team, email, telefone, ID, reset e ação destrutiva. Authentication demonstra listas de métodos e 2FA. Sign in with Vercel demonstra search/filter e uma conexão. Billing Information demonstra cards de formulário. Billing Items demonstra billing por Personal/Teams. Invoices demonstra select + empty state. Tokens demonstra criação, tabs e tabela.
