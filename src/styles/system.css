@@ -380,7 +380,7 @@
   .ds-nav-subitem:hover { color: var(--ds-foreground); background: var(--ds-hover); }
   .ds-nav-subitem[aria-current='page'] { color: var(--ds-foreground); background: var(--ds-active); font-weight: var(--ds-weight-medium); }
 
-  .ds-header[data-variant='account'] { height: var(--ds-space-12); }
+  .ds-header[data-variant='account'] { height: var(--ds-header-height); }
   .ds-header[data-variant='account'] .ds-header-center { font-weight: var(--ds-weight-medium); }
   .ds-page--account { max-width: none; padding-top: 0; }
   .ds-account-stack, .ds-account-standalone, .ds-account-section-stack, .ds-account-invoices, .ds-account-token-page { width: min(100%, var(--ds-account-width)); margin-inline: auto; padding-top: var(--ds-space-6); }
@@ -392,25 +392,39 @@
 
   .ds-account-card { overflow: hidden; border: var(--ds-border-width) solid var(--ds-border); border-radius: var(--ds-radius-lg); background: var(--ds-card); }
   .ds-account-card--danger { border-color: color-mix(in srgb, var(--ds-destructive) 55%, var(--ds-border)); }
-  .ds-account-card-body { display: flex; flex-direction: column; gap: var(--ds-space-4); padding: var(--ds-space-4); }
+  .ds-account-card-body { display: flex; flex-direction: column; gap: var(--ds-space-4); padding: var(--ds-space-5); }
   .ds-account-card-heading { display: flex; flex-direction: column; gap: var(--ds-space-1); }
   .ds-account-card-heading h2 { font-size: var(--ds-font-large); line-height: var(--ds-leading-body); font-weight: var(--ds-weight-semibold); }
-  .ds-account-card-heading p { color: var(--ds-muted-foreground); font-size: var(--ds-font-small); line-height: var(--ds-leading-label); max-width: 100%; }
-  .ds-account-card-footer { min-height: 44px; display: flex; align-items: center; padding: var(--ds-space-2) var(--ds-space-4); border-top: var(--ds-border-width) solid var(--ds-border); color: var(--ds-muted-foreground); font-size: var(--ds-font-caption); line-height: var(--ds-leading-caption); }
+  .ds-account-card-heading p { color: var(--ds-muted-foreground); font-size: var(--ds-font-body); line-height: var(--ds-leading-label); max-width: 100%; }
+  .ds-account-card-footer { min-height: 56px; display: flex; align-items: center; padding: var(--ds-space-2) var(--ds-space-5); border-top: var(--ds-border-width) solid var(--ds-border); color: var(--ds-muted-foreground); font-size: var(--ds-font-small); line-height: var(--ds-leading-label); }
   .ds-account-card-footer--danger { background: color-mix(in srgb, var(--ds-destructive) 18%, transparent); border-top-color: color-mix(in srgb, var(--ds-destructive) 35%, var(--ds-border)); }
   .ds-account-footer-line { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--ds-space-4); }
   .ds-account-footer-line > span { min-width: 0; }
   .ds-account-footer-line .ds-link { display: inline-flex; align-items: center; gap: var(--ds-space-1); }
   .ds-account-footer-line .ds-link svg { width: var(--ds-space-3); height: var(--ds-space-3); }
+  .ds-account-card-body > .ds-button { align-self: flex-start; }
+  .ds-account-card .ds-input,
+  .ds-account-card .ds-select-trigger,
+  .ds-account-standalone .ds-input,
+  .ds-account-standalone .ds-select-trigger,
+  .ds-account-invoices .ds-select-trigger,
+  .ds-account-token-page .ds-input,
+  .ds-account-token-page .ds-select-trigger { border-color: var(--ds-border); background: var(--ds-background); }
+  .ds-account-card .ds-input:hover,
+  .ds-account-card .ds-select-trigger:hover,
+  .ds-account-standalone .ds-input:hover,
+  .ds-account-standalone .ds-select-trigger:hover,
+  .ds-account-token-page .ds-input:hover,
+  .ds-account-token-page .ds-select-trigger:hover { border-color: var(--ds-border-strong); }
   .ds-account-danger-action { width: 100%; display: flex; justify-content: flex-end; }
 
   .ds-account-avatar-card .ds-account-card-body { min-height: 92px; flex-direction: row; align-items: flex-start; justify-content: space-between; }
   .ds-account-avatar { width: 56px; height: 56px; display: grid; place-content: center; flex: none; border-radius: var(--ds-radius-full); background: linear-gradient(135deg, var(--ds-info), var(--ds-destructive)); color: var(--ds-primary-foreground); font-size: var(--ds-font-large); font-weight: var(--ds-weight-semibold); }
-  .ds-account-short-field { width: min(100%, 240px); }
+  .ds-account-short-field { width: min(100%, 304px); }
   .ds-account-input-group { display: flex; align-items: center; height: var(--ds-control-md); overflow: hidden; border: var(--ds-border-width) solid var(--ds-border); border-radius: var(--ds-radius-md); background: var(--ds-input); }
   .ds-account-input-group > span { display: flex; align-items: center; align-self: stretch; padding: 0 var(--ds-space-3); border-right: var(--ds-border-width) solid var(--ds-border); color: var(--ds-muted-foreground); font-size: var(--ds-font-small); }
   .ds-account-input-group .ds-input { flex: 1; min-width: 0; height: 100%; border: 0; border-radius: 0; outline: none; }
-  .ds-account-team-chip { width: min(100%, 240px); height: var(--ds-control-md); display: flex; align-items: center; gap: var(--ds-space-2); padding: 0 var(--ds-space-2); border: var(--ds-border-width) solid var(--ds-border); border-radius: var(--ds-radius-md); background: var(--ds-input); font-size: var(--ds-font-small); }
+  .ds-account-team-chip { width: min(100%, 304px); height: var(--ds-control-md); display: flex; align-items: center; gap: var(--ds-space-2); padding: 0 var(--ds-space-2); border: var(--ds-border-width) solid var(--ds-border); border-radius: var(--ds-radius-md); background: var(--ds-input); font-size: var(--ds-font-small); }
   .ds-account-team-chip > :last-child { margin-left: auto; color: var(--ds-muted-foreground); }
   .ds-account-list-row { display: flex; align-items: center; gap: var(--ds-space-2); min-height: 48px; padding: var(--ds-space-2) var(--ds-space-3); border: var(--ds-border-width) solid var(--ds-border); border-radius: var(--ds-radius-md); background: var(--ds-background); font-size: var(--ds-font-small); }
   .ds-account-copy-field { width: max-content; max-width: 100%; display: flex; align-items: center; height: var(--ds-control-md); overflow: hidden; border: var(--ds-border-width) solid var(--ds-border); border-radius: var(--ds-radius-md); background: var(--ds-input); }
