@@ -63,6 +63,17 @@ test('source and generated preview exclude account-export identifiers and secret
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('team switcher preserves the measured Vercel scope interaction contract', () => {
+  const styles = text('src/styles/system.css');
+  const source = text('src/blocks/team-switcher.tsx');
+  assert(styles.includes('.ds-team-link:hover { background: transparent; }'));
+  assert(styles.includes('width: min(384px, calc(100vw - var(--ds-space-4)))'));
+  assert(styles.includes('.ds-team-results { width: 100%; height: 250px;'));
+  assert(source.includes('aria-label="Switch team"'));
+  assert(source.includes('placeholder="Find Team…"'));
+  assert(source.includes('Teams you create and join appear here for quick context switching.'));
+});
+
 test('Storybook docs expand stories to content height instead of fixed iframes', () => {
   const preview = text('.storybook/preview.tsx');
   assert(preview.includes("story: { inline: true }"));
