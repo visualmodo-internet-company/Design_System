@@ -24,6 +24,29 @@ test('branch search recovers from an empty result', async ({ page }) => {
   await page.getByRole('button', { name: 'Clear filters' }).click();
   await expect(page.getByText('main', { exact: true }).last()).toBeVisible();
 });
+test('contextual sidebar back control keeps its label centered with the icon anchored left', async ({ page }) => {
+  await page.getByRole('link', { name: 'Network' }).click();
+  const back = page.getByRole('button', { name: 'Back to overview' });
+  await expect(back).toBeVisible();
+  const geometry = await back.evaluate((button) => {
+    const label = button.querySelector('.ds-nav-back-label');
+    const icon = button.querySelector('svg');
+    if (!(label instanceof HTMLElement) || !(icon instanceof SVGElement)) return null;
+    const buttonRect = button.getBoundingClientRect();
+    const labelRect = label.getBoundingClientRect();
+    const iconRect = icon.getBoundingClientRect();
+    return {
+      buttonCenter: buttonRect.left + buttonRect.width / 2,
+      labelCenter: labelRect.left + labelRect.width / 2,
+      iconLeft: iconRect.left,
+      buttonLeft: buttonRect.left,
+    };
+  });
+  expect(geometry).not.toBeNull();
+  expect(Math.abs((geometry?.buttonCenter ?? 0) - (geometry?.labelCenter ?? 0))).toBeLessThanOrEqual(1);
+  expect((geometry?.iconLeft ?? 0) - (geometry?.buttonLeft ?? 0)).toBeLessThan(20);
+});
+
 test('team switcher matches the scoped popover interaction', async ({ page }) => {
   const trigger = page.getByRole('button', { name: 'Switch team' });
   await trigger.click();
