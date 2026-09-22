@@ -13,11 +13,11 @@
       "export": "Button",
       "story": "stories/components/button.stories.tsx",
       "status": "implemented-unverified-runtime",
-      "description": "Ações explícitas com hierarquia previsível.",
-      "use": "Uma ação principal por região; outline para ações secundárias.",
-      "avoid": "Navegação sem URL ou vários botões primários concorrentes.",
+      "description": "Ações explícitas com hierarquia previsível e alturas de 36 px padrão ou 32 px compacta.",
+      "use": "Use 36 px em forms, toolbars e grupos de ação de página; use 32 px apenas para ações internas de containers densos.",
+      "avoid": "Não misturar controles de 32 px e 36 px na mesma toolbar nem usar compact como padrão de página.",
       "accessibility": "Nome acessível em icon-only; loading mantém o texto; asChild em links exige href.",
-      "ai": "Importar o componente existente; compor com tokens semânticos; não recriar o primitive nem inventar variantes."
+      "ai": "Importar o componente existente; default corresponde a 36 px, sm corresponde a 32 px compactos; não recriar o primitive nem inventar variantes."
     },
     {
       "name": "Input",
