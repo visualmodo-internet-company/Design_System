@@ -27,19 +27,19 @@ function AccountDemo({ initialPage, onAction }: { initialPage: string; onAction:
   );
 }
 
+const onAction = fn();
 const meta = {
   title: 'Pages/Account',
   parameters: { layout: 'fullscreen' },
-  args: { onAction: fn() },
-} satisfies Meta<{ onAction: (message: string) => void }>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
-export const Settings: Story = { render: (args) => <AccountDemo initialPage="account-settings" onAction={args.onAction} /> };
-export const Authentication: Story = { render: (args) => <AccountDemo initialPage="account-authentication" onAction={args.onAction} /> };
-export const SignInWithVercel: Story = { render: (args) => <AccountDemo initialPage="account-sign-in" onAction={args.onAction} /> };
-export const BillingInformation: Story = { render: (args) => <AccountDemo initialPage="account-billing-information" onAction={args.onAction} /> };
-export const BillingItems: Story = { render: (args) => <AccountDemo initialPage="account-billing-items" onAction={args.onAction} /> };
-export const Invoices: Story = { render: (args) => <AccountDemo initialPage="account-invoices" onAction={args.onAction} /> };
-export const Tokens: Story = { render: (args) => <AccountDemo initialPage="account-tokens" onAction={args.onAction} /> };
+export const Settings: Story = { render: () => <AccountDemo initialPage="account-settings" onAction={onAction} /> };
+export const Authentication: Story = { render: () => <AccountDemo initialPage="account-authentication" onAction={onAction} /> };
+export const SignInWithVercel: Story = { render: () => <AccountDemo initialPage="account-sign-in" onAction={onAction} /> };
+export const BillingInformation: Story = { render: () => <AccountDemo initialPage="account-billing-information" onAction={onAction} /> };
+export const BillingItems: Story = { render: () => <AccountDemo initialPage="account-billing-items" onAction={onAction} /> };
+export const Invoices: Story = { render: () => <AccountDemo initialPage="account-invoices" onAction={onAction} /> };
+export const Tokens: Story = { render: () => <AccountDemo initialPage="account-tokens" onAction={onAction} /> };
