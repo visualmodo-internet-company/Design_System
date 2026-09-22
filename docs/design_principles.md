@@ -4,6 +4,10 @@
 
 O dashboard tem navegação compacta, controles contidos e conteúdo principal respirando dentro de uma largura máxima. A densidade vem da escala e da hierarquia, não de diminuir todos os elementos por zoom.
 
+## Control rhythm
+
+Controles de formulário e ações de toolbar usam 36 px como altura padrão. Inputs, search fields, selects e botões que aparecem lado a lado devem compartilhar essa altura. A escala de 32 px é compacta e fica reservada para ações internas de containers densos, como linhas de provider, cards compactos, footers e itens auxiliares. Não misture 32 px e 36 px dentro da mesma toolbar.
+
 ## Neutral first
 
 Preto/branco e cinzas organizam a interface. Azul indica links, foco e informação. Verde/teal, âmbar e vermelho representam estados, sempre acompanhados de texto. Não crie um card colorido só para destacar uma ação comum.
