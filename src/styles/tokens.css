@@ -28,7 +28,7 @@
   --ds-popover: #ffffff; --ds-muted: #f2f2f2; --ds-muted-foreground: #666666;
   --ds-subtle: #fafafa; --ds-hover: #f2f2f2; --ds-active: #ebebeb;
   --ds-border: #e5e5e5; --ds-border-subtle: #eeeeee; --ds-border-strong: #d4d4d4;
-  --ds-input: #ffffff; --ds-input-border: #8a8a8a; --ds-ring: #0070f3;
+  --ds-input: #ffffff; --ds-input-border: #8a8a8a; --ds-account-input-border: #dedede; --ds-ring: #0070f3;
   --ds-primary: #171717; --ds-primary-foreground: #ffffff; --ds-primary-hover: #383838;
   --ds-secondary: #f2f2f2; --ds-secondary-foreground: #171717;
   --ds-accent: #ebebeb; --ds-accent-foreground: #171717;
@@ -49,7 +49,7 @@
   --ds-popover: #0a0a0a; --ds-muted: #181818; --ds-muted-foreground: #a1a1a1;
   --ds-subtle: #0a0a0a; --ds-hover: #181818; --ds-active: #1f1f1f;
   --ds-border: #292929; --ds-border-subtle: #1a1a1a; --ds-border-strong: #444444;
-  --ds-input: #0a0a0a; --ds-input-border: #737373; --ds-ring: #52a8ff;
+  --ds-input: #0a0a0a; --ds-input-border: #737373; --ds-account-input-border: #2c2c2c; --ds-ring: #52a8ff;
   --ds-primary: #ededed; --ds-primary-foreground: #0a0a0a; --ds-primary-hover: #cccccc;
   --ds-secondary: #181818; --ds-secondary-foreground: #ededed;
   --ds-accent: #1f1f1f; --ds-accent-foreground: #ededed;
