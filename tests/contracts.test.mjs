@@ -72,7 +72,7 @@ test('control heights follow the 36px toolbar and 32px compact rule', () => {
   assert(deployment.includes('<Button variant="outline"'));
   assert(!deployment.includes('size="sm" variant="outline" onClick={() => onAction(\'Repository connection'));
   assert(overview.includes('<Button variant="outline"><Filter'));
-  assert(text('docs/spacing.md').includes('mesma toolbar'));
+  assert(text('docs/spacing.md').includes('todos os controles dessa linha usam 36 px'));
 });
 
 test('sidebar search and scrollbars preserve the requested visual contracts', () => {
