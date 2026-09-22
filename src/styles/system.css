@@ -376,7 +376,7 @@
   .ds-account-back:hover { color: var(--ds-foreground); }
   .ds-account-back svg { width: var(--ds-space-4); height: var(--ds-space-4); }
   .ds-nav-sublist { display: flex; flex-direction: column; padding: 0 0 var(--ds-space-1) 22px; }
-  .ds-nav-subitem { display: flex; align-items: center; min-height: var(--ds-navigation-height); padding: 0 var(--ds-space-3); border-radius: var(--ds-radius-md); color: var(--ds-muted-foreground); font-size: var(--ds-font-small); line-height: var(--ds-leading-label); font-weight: var(--ds-weight-regular); }
+  .ds-nav-subitem { display: flex; align-items: center; min-height: var(--ds-navigation-height); padding: 0 var(--ds-space-3); border-radius: var(--ds-radius-md); color: var(--ds-muted-foreground); font-size: var(--ds-font-body); line-height: var(--ds-leading-label); font-weight: var(--ds-weight-regular); letter-spacing: 0; }
   .ds-nav-subitem:hover { color: var(--ds-foreground); background: var(--ds-hover); }
   .ds-nav-subitem[aria-current='page'] { color: var(--ds-foreground); background: var(--ds-active); font-weight: var(--ds-weight-medium); }
 
