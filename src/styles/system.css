@@ -124,7 +124,7 @@
   .ds-menu-item[data-disabled] { opacity: .45; pointer-events: none; }
   .ds-menu-choice { justify-content: space-between; }
   .ds-menu-item-content { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
-  .ds-menu-selection { width: var(--ds-space-4); height: var(--ds-space-4); margin-left: auto; flex: none; display: grid; place-content: center; color: var(--ds-muted-foreground); }
+  .ds-menu-selection { width: var(--ds-space-4); height: var(--ds-space-4); margin-left: auto; flex: none; display: grid; place-content: center; color: var(--ds-foreground); }
   .ds-menu-selection svg { width: var(--ds-space-4); height: var(--ds-space-4); }
   .ds-menu-label { padding: 10px 10px 6px; font-size: var(--ds-font-body); line-height: var(--ds-leading-label); font-weight: var(--ds-weight-regular); color: var(--ds-muted-foreground); }
   .ds-menu-separator { margin: var(--ds-space-2) calc(-1 * var(--ds-space-2)); height: var(--ds-border-width); background: var(--ds-border); }
