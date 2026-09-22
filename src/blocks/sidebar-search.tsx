@@ -140,7 +140,7 @@ export function SidebarSearch({
           className="ds-sidebar-search-popover"
           side="bottom"
           align="start"
-          sideOffset={6}
+          sideOffset={-36}
           collisionPadding={8}
           aria-label="Find"
           onOpenAutoFocus={(event) => {
