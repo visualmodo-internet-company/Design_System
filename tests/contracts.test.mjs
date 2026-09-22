@@ -54,15 +54,31 @@ test('machine-readable tokens and Markdown are generated from the canonical file
   assert.equal(tokens.dark['--ds-sidebar-width'], '256px');
   assert.equal(text('public/docs/ai_guidelines.md'), text('docs/ai_guidelines.md'));
 });
-test('foundation scope excludes real Account, authentication and server logic', () => {
-  assert.deepEqual(readdirSync(path.join(root, 'src/pages')).sort(), ['overview-example.tsx', 'overview-page.tsx']);
+test('reference pages remain frontend-only and include the approved account set', () => {
+  const pages = readdirSync(path.join(root, 'src/pages')).sort();
+  assert(pages.includes('overview-example.tsx'));
+  assert(pages.includes('overview-page.tsx'));
+  assert(pages.includes('account-pages.tsx'));
   assert(!existsSync(path.join(root, 'src/api')));
-  assert(text('README.md').includes('foundation-preview'));
+  const accountPages = text('src/pages/account-pages.tsx');
+  for (const id of ['account-settings', 'account-authentication', 'account-sign-in', 'account-billing-information', 'account-billing-items', 'account-invoices', 'account-tokens']) assert(accountPages.includes(id), id);
+  assert(!accountPages.includes('contact-'));
 });
 test('source and generated preview exclude account-export identifiers and secrets', () => {
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('account navigation keeps the supplied settings destinations in a reusable shell', () => {
+  const navigation = text('src/fixtures/account-navigation.ts');
+  const sidebar = text('src/blocks/sidebar.tsx');
+  const shell = text('src/layouts/application-shell.tsx');
+  for (const label of ['Authentication', 'Sign in with Vercel', 'Billing Information', 'Billing Items', 'Invoices', 'Tokens']) assert(navigation.includes(label), label);
+  assert(sidebar.includes("variant === 'account'"));
+  assert(sidebar.includes('ds-nav-subitem'));
+  assert(shell.includes("variant === 'account'"));
+  assert(shell.includes('ds-page--account'));
+});
+
 test('dropdown menus preserve the Vercel section and selection layout', () => {
   const source = text('src/components/ui/dropdown-menu.tsx');
   const styles = text('src/styles/system.css');
