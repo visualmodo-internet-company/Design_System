@@ -24,11 +24,14 @@ test('team switcher matches the scoped popover interaction', async ({ page }) =>
   await expect(popover).toHaveCount(0);
 });
 
-test('keyboard search opens and closes without a mouse', async ({ page }) => {
+test('keyboard search opens the sidebar command panel and closes without a mouse', async ({ page }) => {
   await page.keyboard.press('f');
-  await expect(page.getByRole('dialog', { name: 'Find in navigation' })).toBeVisible();
+  const panel = page.getByRole('dialog', { name: 'Find' });
+  await expect(panel).toBeVisible();
+  await expect(page.getByRole('searchbox', { name: 'Find' })).toBeFocused();
+  await expect(panel.getByText('Navigation Assistant')).toBeVisible();
   await page.keyboard.press('Escape');
-  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(panel).toHaveCount(0);
 });
 test('sidebar keyboard resizing persists its bounded width', async ({ page }) => {
   const resizer = page.getByRole('separator', { name: 'Resize sidebar' });
