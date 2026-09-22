@@ -1,0 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+const samples = [{ name: 'Heading 1', className: 'ds-heading-1', scale: '32 / 40 · 600' },{ name: 'Heading 2', className: 'ds-heading-2', scale: '24 / 32 · 600' },{ name: 'Heading 3', className: 'ds-heading-3', scale: '20 / 28 · 600' },{ name: 'Heading 4', className: 'ds-heading-4', scale: '16 / 24 · 600' },{ name: 'Body large', className: 'text-base', scale: '16 / 24 · 400' },{ name: 'Body', className: '', scale: '14 / 24 · 400' },{ name: 'Body small', className: 'ds-small', scale: '13 / 20 · 400' },{ name: 'Caption', className: 'ds-caption', scale: '12 / 16 · 400' },{ name: 'Label', className: 'ds-label', scale: '14 / 20 · 500' },{ name: 'Code', className: 'ds-mono', scale: '13 / 20 · 400' }];
+function Typography() { return <div className="ds-doc ds-stack-lg"><h1 className="ds-heading-1">Typography</h1><p className="ds-muted">Geist for interface. Geist Mono for code and identifiers.</p>{samples.map((sample) => <section key={sample.name} className="ds-card ds-doc-card"><h2 className="ds-caption ds-muted">{sample.name} · {sample.scale}</h2><p className={sample.className}>Build a consistent interface.</p></section>)}</div>; }
+const meta = { title: 'Foundations/Typography', component: Typography, tags: ['autodocs'] } satisfies Meta<typeof Typography>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export const Scale: Story = {};

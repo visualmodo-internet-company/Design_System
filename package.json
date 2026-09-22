@@ -1,0 +1,62 @@
+{
+  "name": "@visualmodo/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared interface foundations, components and AI-readable guidance for multiple projects.",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "storybook": "storybook dev -p 6006 --no-open --disable-telemetry",
+    "build-storybook": "storybook build --disable-telemetry",
+    "build_storybook": "npm run build-storybook",
+    "lint": "eslint .",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "playwright test",
+    "registry:build": "node scripts/build-registry.mjs",
+    "docs:build": "node scripts/build-docs.mjs",
+    "prepare:static": "npm run registry:build && npm run docs:build",
+    "prebuild-storybook": "npm run prepare:static",
+    "preview:reference": "node scripts/preview-server.mjs",
+    "check": "npm run test && npm run lint && npm run build && npm run build-storybook",
+    "reference:build": "node scripts/build-reference.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.2.0",
+    "@fontsource-variable/geist-mono": "^5.2.0",
+    "class-variance-authority": "0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "0.474.0",
+    "radix-ui": "^1.4.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@playwright/test": "^1.57.0",
+    "@axe-core/playwright": "^4.10.2",
+    "@storybook/addon-a11y": "10.6.0",
+    "@storybook/addon-docs": "10.6.0",
+    "@storybook/react-vite": "10.6.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/node": "^22.15.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^9.30.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.2.0",
+    "shadcn": "4.21.0",
+    "storybook": "10.6.0",
+    "tailwindcss": "^4.3.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.46.2",
+    "vite": "^7.0.0"
+  }
+}

@@ -1,0 +1,14 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+const root = fileURLToPath(new URL('../', import.meta.url));
+const read = (name) => readFile(path.join(root, name), 'utf8');
+const [template, tokens, system, script, fixtureText, glyphText] = await Promise.all(['preview/template.html', 'src/styles/tokens.css', 'src/styles/system.css', 'preview/reference.js', 'src/fixtures/overview.json', 'preview/glyphs.json'].map(read));
+const fixture = JSON.parse(fixtureText), glyphs = JSON.parse(glyphText);
+const escape = (text) => String(text).replace(/[&<>"']/g, (character) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[character]));
+const checklist = fixture.checklist.map((label, index) => `<button type="button" class="ds-button ds-button--secondary ds-button--sm" aria-pressed="false" data-checklist>${glyphs[['monitor','globe','monitor','chart','plus'][index]] ?? glyphs.plus}${escape(label)}</button>`).join('');
+const metrics = fixture.metrics.map((metric, index) => `<div class="ds-metric"><div><p class="ds-muted">${escape(metric.label)}</p><p class="ds-label">${escape(metric.value)}</p></div><svg class="ds-sparkline" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" x2="240" y1="34" y2="34"/>${index < 2 ? '<path d="M0 34h30l10-27 10 27h30l10-27 10 27h30l10-27 10 27h90"/>' : ''}</svg></div>`).join('');
+const output = template.replace('%%CSS%%', tokens + '\n' + system).replace('%%CHECKLIST%%', checklist).replace('%%METRICS%%', metrics).replace('%%DATA%%', JSON.stringify(fixture).replaceAll('<', '\\u003c')).replace('%%SCRIPT%%', script);
+if (/%%[A-Z]+%%/.test(output)) throw new Error('Unreplaced template placeholder.');
+await writeFile(path.join(root, 'preview/reference.html'), output);
+console.log('Generated standalone visual reference from canonical CSS and Overview fixture. This is not a React build.');

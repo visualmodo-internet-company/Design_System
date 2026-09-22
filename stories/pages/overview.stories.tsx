@@ -1,0 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { OverviewExample } from '@/pages/overview-example';
+const meta = { title: 'Pages/Overview', component: OverviewExample, render: (args) => <OverviewExample key={args.initialState ?? 'ready'} {...args} />, tags: ['autodocs'], parameters: { layout: 'fullscreen', docs: { description: { component: 'Primeira página para aprovação visual. Dados fictícios; nenhuma ação chama um backend. Network demonstra navegação contextual. Account e outras páginas são a próxima etapa.' } } }, argTypes: { initialState: { control: 'select', options: ['ready','loading','empty','error'] } } } satisfies Meta<typeof OverviewExample>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export const Default: Story = {};
+export const Light: Story = { globals: { theme: 'light' } };
+export const Mobile: Story = { globals: { viewport: { value: 'mobile', isRotated: false } } };
+export const Tablet: Story = { globals: { viewport: { value: 'tablet', isRotated: false } } };
+export const Loading: Story = { args: { initialState: 'loading' } };
+export const Empty: Story = { args: { initialState: 'empty' } };
+export const Error: Story = { args: { initialState: 'error' } };

@@ -1,0 +1,33 @@
+{
+  "workspace": "Design System",
+  "project": "example-project",
+  "user": "Jamie Doe",
+  "deployment": "example-project-a1b2c3.example.com",
+  "domain": "example.com",
+  "branch": "main",
+  "commit": "a1b2c3d",
+  "message": "Refine shared interface foundations",
+  "created": "Sep 19",
+  "metrics": [
+    {
+      "label": "Edge requests",
+      "value": "3"
+    },
+    {
+      "label": "Function invocations",
+      "value": "3"
+    },
+    {
+      "label": "Error rate",
+      "value": "0%"
+    }
+  ],
+  "checklist": [
+    "Connect repository",
+    "Add custom domain",
+    "Preview deployment",
+    "Enable analytics",
+    "Review performance"
+  ],
+  "plan": "Hobby"
+}

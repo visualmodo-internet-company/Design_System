@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
+import { ApplicationShell } from '@/layouts/application-shell';
+import { ContentLayout } from '@/layouts/content-layout';
+import { demoNavigation } from '@/fixtures/navigation';
+const meta = { title: 'Layouts/Application Shell', component: ApplicationShell, tags: ['autodocs'], parameters: { layout: 'fullscreen' }, args: { navigation: demoNavigation, activeId: 'overview', title: 'Overview', workspace: 'Workspace', project: 'example-project', onNavigate: fn(), onAction: fn(), children: <ContentLayout title="Your next page" description="Compose the content. Keep the shell and semantic tokens unchanged."><p>Account, settings and other standard pages are intentionally not built yet.</p></ContentLayout> } } satisfies Meta<typeof ApplicationShell>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export const Default: Story = {};
+export const LongLabels: Story = { args: { project: 'A very long project name that should truncate without breaking navigation', workspace: 'A workspace with a long name' } };

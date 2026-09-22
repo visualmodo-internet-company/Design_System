@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import './tokens.css';
+@import './system.css';
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@theme inline {
+  --font-sans: var(--ds-font-sans); --font-mono: var(--ds-font-mono);
+  --color-background: var(--ds-background); --color-foreground: var(--ds-foreground);
+  --color-card: var(--ds-card); --color-card-foreground: var(--ds-foreground);
+  --color-popover: var(--ds-popover); --color-popover-foreground: var(--ds-foreground);
+  --color-primary: var(--ds-primary); --color-primary-foreground: var(--ds-primary-foreground);
+  --color-secondary: var(--ds-secondary); --color-secondary-foreground: var(--ds-secondary-foreground);
+  --color-muted: var(--ds-muted); --color-muted-foreground: var(--ds-muted-foreground);
+  --color-accent: var(--ds-accent); --color-accent-foreground: var(--ds-accent-foreground);
+  --color-border: var(--ds-border); --color-input: var(--ds-input-border); --color-ring: var(--ds-ring);
+  --color-destructive: var(--ds-destructive); --color-success: var(--ds-success); --color-info: var(--ds-info);
+  --radius-sm: var(--ds-radius-sm); --radius-md: var(--ds-radius-md); --radius-lg: var(--ds-radius-lg);
+}

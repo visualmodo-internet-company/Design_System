@@ -1,0 +1,15 @@
+node_modules/
+dist/
+storybook-static/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store
+public/r/
+public/docs/
+public/llms.txt
+public/component-manifest.json
+public/tokens.json
