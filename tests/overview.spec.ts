@@ -7,7 +7,7 @@ test('overview composes the shared shell with semantic headings', async ({ page 
   await expect(page.getByRole('main')).toHaveCount(1);
 });
 test('branch search recovers from an empty result', async ({ page }) => {
-  await page.getByRole('textbox', { name: 'Search branches' }).fill('not-a-real-branch');
+  await page.getByRole('searchbox', { name: 'Search branches' }).fill('not-a-real-branch');
   await expect(page.getByRole('heading', { name: 'No matching branches' })).toBeVisible();
   await page.getByRole('button', { name: 'Clear filters' }).click();
   await expect(page.getByText('main', { exact: true }).last()).toBeVisible();
