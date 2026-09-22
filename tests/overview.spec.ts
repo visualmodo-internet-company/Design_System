@@ -137,7 +137,7 @@ test('account settings matches the reference card geometry and footer alignment'
     const input = getComputedStyle(node);
     return {
       inputBorder: input.borderTopColor,
-      token: root.getPropertyValue('--ds-border').trim(),
+      token: root.getPropertyValue('--ds-account-input-border').trim(),
     };
   });
   expect(borderCheck.inputBorder).toBe(borderCheck.token);
