@@ -118,6 +118,50 @@ test('account pages do not expose personal account export identifiers', async ({
   expect(text).not.toContain('dpl_');
 });
 
+test('account settings matches the reference card geometry and footer alignment', async ({ page }) => {
+  await page.getByRole('button', { name: 'Open user menu' }).click();
+  await page.getByRole('menuitem', { name: 'Account settings' }).click();
+
+  const header = page.locator('.ds-header[data-variant="account"]');
+  expect(Math.round((await header.boundingBox())?.height ?? 0)).toBe(56);
+
+  const firstCard = page.locator('.ds-account-card').first();
+  expect(Math.round((await firstCard.boundingBox())?.width ?? 0)).toBe(928);
+
+  const stack = page.locator('.ds-account-stack');
+  expect(await stack.evaluate((node) => getComputedStyle(node).gap)).toBe('32px');
+
+  const displayInput = page.getByRole('textbox', { name: 'Display Name' });
+  const borderCheck = await displayInput.evaluate((node) => {
+    const root = getComputedStyle(document.documentElement);
+    const input = getComputedStyle(node);
+    return {
+      inputBorder: input.borderTopColor,
+      token: root.getPropertyValue('--ds-border').trim(),
+    };
+  });
+  expect(borderCheck.inputBorder).toBe(borderCheck.token);
+
+  const displayCard = page.getByRole('heading', { name: 'Display Name' }).locator('..').locator('..').locator('..');
+  const footer = displayCard.locator('.ds-account-card-footer');
+  expect(Math.round((await footer.boundingBox())?.height ?? 0)).toBe(56);
+  const save = footer.getByRole('button', { name: 'Save' });
+  await expect(save).toBeDisabled();
+  const rightGap = await footer.evaluate((node) => {
+    const button = node.querySelector('button');
+    if (!(button instanceof HTMLElement)) return -1;
+    const a = node.getBoundingClientRect();
+    const b = button.getBoundingClientRect();
+    return Math.round(a.right - b.right);
+  });
+  expect(rightGap).toBeGreaterThanOrEqual(20);
+  expect(rightGap).toBeLessThanOrEqual(28);
+
+  const emailCard = page.getByRole('heading', { name: 'Email', exact: true }).locator('..').locator('..').locator('..');
+  const addAnother = emailCard.getByRole('button', { name: 'Add Another' });
+  expect(Math.round((await addAnother.boundingBox())?.width ?? 0)).toBeLessThan(180);
+});
+
 test('team switcher matches the scoped popover interaction', async ({ page }) => {
   const trigger = page.getByRole('button', { name: 'Switch team' });
   await trigger.click();
