@@ -409,7 +409,7 @@
   .ds-account-standalone .ds-select-trigger,
   .ds-account-invoices .ds-select-trigger,
   .ds-account-token-page .ds-input,
-  .ds-account-token-page .ds-select-trigger { border-color: var(--ds-border); background: var(--ds-background); }
+  .ds-account-token-page .ds-select-trigger { border-color: var(--ds-account-input-border); background: var(--ds-background); }
   .ds-account-card .ds-input:hover,
   .ds-account-card .ds-select-trigger:hover,
   .ds-account-standalone .ds-input:hover,
