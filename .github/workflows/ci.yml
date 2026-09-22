@@ -1,0 +1,36 @@
+name: Validate Design System
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+      - name: Contracts, lint and both production builds
+        run: npm run check
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: React interaction and accessibility tests
+        run: npm run test:e2e
+      - name: Upload browser report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-report
+          path: playwright-report/
+          if-no-files-found: ignore
