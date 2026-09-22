@@ -69,12 +69,13 @@ export function TeamSwitcher({ team, plan, onOpenTeam, onSelectTeam, onCreateTea
           align="start"
           sideOffset={2}
           collisionPadding={8}
+          aria-label="Switch team"
           onOpenAutoFocus={(event) => {
             event.preventDefault();
             requestAnimationFrame(() => inputRef.current?.focus());
           }}
         >
-          <label className="ds-team-search-row">
+          <div className="ds-team-search-row">
             <input
               ref={inputRef}
               type="search"
@@ -87,7 +88,7 @@ export function TeamSwitcher({ team, plan, onOpenTeam, onSelectTeam, onCreateTea
             <button type="button" className="ds-team-close" aria-label="Close team switcher" onClick={() => setOpen(false)}>
               <kbd className="ds-kbd">Esc</kbd>
             </button>
-          </label>
+          </div>
 
           <div className="ds-team-results">
             {matchesTeam && (
