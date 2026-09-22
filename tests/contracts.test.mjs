@@ -63,6 +63,12 @@ test('source and generated preview exclude account-export identifiers and secret
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('Storybook docs expand stories to content height instead of fixed iframes', () => {
+  const preview = text('.storybook/preview.tsx');
+  assert(preview.includes("story: { inline: true }"));
+  assert(!preview.includes("story: { inline: false }"));
+});
+
 test('package scripts use static Storybook publication and strict source checking', () => {
   const pkg = json('package.json');
   assert.equal(pkg.scripts['build-storybook'], 'storybook build --disable-telemetry');
