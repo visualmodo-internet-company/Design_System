@@ -12,6 +12,18 @@ test('branch search recovers from an empty result', async ({ page }) => {
   await page.getByRole('button', { name: 'Clear filters' }).click();
   await expect(page.getByText('main', { exact: true }).last()).toBeVisible();
 });
+test('team switcher matches the scoped popover interaction', async ({ page }) => {
+  const trigger = page.getByRole('button', { name: 'Switch team' });
+  await trigger.click();
+  const popover = page.getByRole('dialog', { name: 'Switch team' });
+  await expect(popover).toBeVisible();
+  await expect(page.getByRole('searchbox', { name: 'Search teams' })).toBeFocused();
+  await expect(popover.getByText('Teams you create and join appear here for quick context switching.')).toBeVisible();
+  await expect(popover.getByRole('button', { name: 'Create Team', exact: false })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(popover).toHaveCount(0);
+});
+
 test('keyboard search opens and closes without a mouse', async ({ page }) => {
   await page.keyboard.press('f');
   await expect(page.getByRole('dialog', { name: 'Find in navigation' })).toBeVisible();
