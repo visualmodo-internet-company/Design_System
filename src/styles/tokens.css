@@ -14,6 +14,7 @@
   --ds-preview-width: 400px; --ds-stat-card-height: 240px; --ds-empty-min-height: 300px;
   --ds-popover-width: 240px; --ds-dialog-width: 480px; --ds-sheet-width: 360px;
   --ds-metric-label-width: 144px; --ds-reading-width: 720px; --ds-form-width: 480px;
+  --ds-account-width: 720px; --ds-account-wide: 880px; --ds-account-row-height: 56px;
   --ds-font-caption: 12px; --ds-font-small: 13px; --ds-font-body: 14px; --ds-font-large: 16px;
   --ds-font-h4: 16px; --ds-font-h3: 20px; --ds-font-h2: 24px; --ds-font-h1: 32px;
   --ds-leading-caption: 16px; --ds-leading-label: 20px; --ds-leading-body: 24px;
