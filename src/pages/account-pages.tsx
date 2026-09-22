@@ -106,7 +106,7 @@ function AvatarMark() {
 }
 
 function SettingsPage({ onAction }: { onAction: Notify }) {
-  const [displayName, setDisplayName] = useState(account.displayName);
+  const [displayName, setDisplayName] = useState('');
   const [username, setUsername] = useState(account.username);
   const [phone, setPhone] = useState(account.phone);
   return (
@@ -125,7 +125,7 @@ function SettingsPage({ onAction }: { onAction: Notify }) {
       <AccountCard
         title="Display Name"
         description="Please enter your full name, or a display name you are comfortable with."
-        footer={<FooterLine>Please use 32 characters at maximum.<Button size="sm" onClick={() => onAction('Display name saved locally for the demo.')}>Save</Button></FooterLine>}
+        footer={<FooterLine action={<Button size="sm" disabled={!displayName.trim()} onClick={() => onAction('Display name saved locally for the demo.')}>Save</Button>}>Please use 32 characters at maximum.</FooterLine>}
       >
         <Input aria-label="Display Name" value={displayName} maxLength={32} onChange={(event) => setDisplayName(event.target.value)} className="ds-account-short-field" />
       </AccountCard>
@@ -133,7 +133,7 @@ function SettingsPage({ onAction }: { onAction: Notify }) {
       <AccountCard
         title="Username"
         description="This is your URL namespace within the platform."
-        footer={<FooterLine>Please use 48 characters at maximum.<Button size="sm" onClick={() => onAction('Username saved locally for the demo.')}>Save</Button></FooterLine>}
+        footer={<FooterLine action={<Button size="sm" onClick={() => onAction('Username saved locally for the demo.')}>Save</Button>}>Please use 48 characters at maximum.</FooterLine>}
       >
         <div className="ds-account-input-group ds-account-short-field">
           <span>example.com/</span>
@@ -144,7 +144,7 @@ function SettingsPage({ onAction }: { onAction: Notify }) {
       <AccountCard
         title="Default Team"
         description="Your default team will be used when you make a request without specifying a particular team. It is also selected when you first navigate to the dashboard."
-        footer={<FooterLine><a className="ds-link" href="#default-team" onClick={(event) => event.preventDefault()}>Learn more about Default Teams <ExternalLink aria-hidden="true" /></a><Button size="sm" disabled>Save</Button></FooterLine>}
+        footer={<FooterLine action={<Button size="sm" disabled>Save</Button>}><a className="ds-link" href="#default-team" onClick={(event) => event.preventDefault()}>Learn more about Default Teams <ExternalLink aria-hidden="true" /></a></FooterLine>}
       >
         <div className="ds-account-team-chip"><span className="ds-team-avatar-mark" aria-hidden="true" /><span>{account.team}</span><span aria-hidden="true">×</span></div>
       </AccountCard>
@@ -166,7 +166,7 @@ function SettingsPage({ onAction }: { onAction: Notify }) {
       <AccountCard
         title="Your Phone Number"
         description="Enter a phone number to receive important service updates by SMS."
-        footer={<FooterLine>A code will be sent to verify.<Button size="sm" onClick={() => onAction('Phone number saved locally for the demo.')}>Save</Button></FooterLine>}
+        footer={<FooterLine action={<Button size="sm" onClick={() => onAction('Phone number saved locally for the demo.')}>Save</Button>}>A code will be sent to verify.</FooterLine>}
       >
         <Input aria-label="Phone number" value={phone} onChange={(event) => setPhone(event.target.value)} className="ds-account-short-field" />
       </AccountCard>
@@ -185,7 +185,7 @@ function SettingsPage({ onAction }: { onAction: Notify }) {
       <AccountCard
         title="Reset Tips"
         description="See onboarding tips you might have missed."
-        footer={<FooterLine>Resetting will make all onboarding tips re-appear.<Button size="sm" onClick={() => onAction('Onboarding tips reset locally for the demo.')}>Reset</Button></FooterLine>}
+        footer={<FooterLine action={<Button size="sm" onClick={() => onAction('Onboarding tips reset locally for the demo.')}>Reset</Button>}>Resetting will make all onboarding tips re-appear.</FooterLine>}
       />
 
       <AccountCard
@@ -291,16 +291,16 @@ function BillingInformationPage({ onAction }: { onAction: Notify }) {
       <AccountCard
         title="Payment Method"
         description="Payments for domains, add-ons, and other usage are made using the default card."
-        footer={<FooterLine>At most, three credit cards can be added.<Button size="sm" onClick={() => onAction('Add card demonstrated locally.')}>Add Card</Button></FooterLine>}
+        footer={<FooterLine action={<Button size="sm" onClick={() => onAction('Add card demonstrated locally.')}>Add Card</Button>}>At most, three credit cards can be added.</FooterLine>}
       >
         <div className="ds-account-empty-inline"><span className="ds-empty-icon"><CreditCard /></span><span>No payment methods added</span></div>
       </AccountCard>
 
-      <AccountCard title="Invoice Email Recipient" description="By default, all your invoices will be sent to your account's email address. If you want to use a custom email address specifically for receiving invoices, enter it here." footer={<FooterLine>Please use 254 characters at maximum.<Button size="sm" onClick={() => save('Invoice email recipient')}>Save</Button></FooterLine>}>
+      <AccountCard title="Invoice Email Recipient" description="By default, all your invoices will be sent to your account's email address. If you want to use a custom email address specifically for receiving invoices, enter it here." footer={<FooterLine action={<Button size="sm" onClick={() => save('Invoice email recipient')}>Save</Button>}>Please use 254 characters at maximum.</FooterLine>}>
         <Input aria-label="Invoice Email Recipient" value={invoiceEmail} onChange={(event) => setInvoiceEmail(event.target.value)} />
       </AccountCard>
 
-      <AccountCard title="Company Name" description="By default, your account name is shown on your invoice. If you want to show a custom name instead, please enter it here." footer={<FooterLine>Please use 64 characters at maximum.<Button size="sm" onClick={() => save('Company name')}>Save</Button></FooterLine>}>
+      <AccountCard title="Company Name" description="By default, your account name is shown on your invoice. If you want to show a custom name instead, please enter it here." footer={<FooterLine action={<Button size="sm" onClick={() => save('Company name')}>Save</Button>}>Please use 64 characters at maximum.</FooterLine>}>
         <Input aria-label="Company Name" value={company} onChange={(event) => setCompany(event.target.value)} />
       </AccountCard>
 
@@ -312,15 +312,15 @@ function BillingInformationPage({ onAction }: { onAction: Notify }) {
         </div>
       </AccountCard>
 
-      <AccountCard title="Invoice Language" description="If your billing department is using a different language, enter it here." footer={<FooterLine>This field determines the language of your invoice.<Button size="sm" onClick={() => save('Invoice language')}>Save</Button></FooterLine>}>
+      <AccountCard title="Invoice Language" description="If your billing department is using a different language, enter it here." footer={<FooterLine action={<Button size="sm" onClick={() => save('Invoice language')}>Save</Button>}>This field determines the language of your invoice.</FooterLine>}>
         <Select defaultValue="en"><SelectTrigger aria-label="Invoice Language"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="en">English</SelectItem><SelectItem value="pt">Português</SelectItem><SelectItem value="es">Español</SelectItem></SelectContent></Select>
       </AccountCard>
 
-      <AccountCard title="Invoice Purchase Order" description="By default, no purchase order line is shown on your account's billing invoices. If you want to show a purchase order line, please enter it here." footer={<FooterLine>Please use 64 characters at maximum.<Button size="sm" onClick={() => save('Invoice purchase order')}>Save</Button></FooterLine>}>
+      <AccountCard title="Invoice Purchase Order" description="By default, no purchase order line is shown on your account's billing invoices. If you want to show a purchase order line, please enter it here." footer={<FooterLine action={<Button size="sm" onClick={() => save('Invoice purchase order')}>Save</Button>}>Please use 64 characters at maximum.</FooterLine>}>
         <Input aria-label="Invoice Purchase Order" value={purchaseOrder} onChange={(event) => setPurchaseOrder(event.target.value)} />
       </AccountCard>
 
-      <AccountCard title="Tax ID" description="If you would like your invoice to render a specific tax ID, enter it here." footer={<FooterLine>Countries that do not use Tax IDs are not listed.<Button size="sm" onClick={() => save('Tax ID')}>Save</Button></FooterLine>}>
+      <AccountCard title="Tax ID" description="If you would like your invoice to render a specific tax ID, enter it here." footer={<FooterLine action={<Button size="sm" onClick={() => save('Tax ID')}>Save</Button>}>Countries that do not use Tax IDs are not listed.</FooterLine>}>
         <div className="ds-account-tax-row">
           <Select defaultValue="us-tax"><SelectTrigger aria-label="Tax type"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="us-tax">US Tax ID</SelectItem><SelectItem value="vat">VAT number</SelectItem></SelectContent></Select>
           <Input aria-label="Tax ID" value={taxId} onChange={(event) => setTaxId(event.target.value)} />
@@ -336,13 +336,13 @@ function BillingItemsPage({ onAction }: { onAction: Notify }) {
       <section><h1 className="ds-account-section-title">Personal</h1>
         <div className="ds-account-billing-item">
           <div className="ds-account-billing-item-top"><div><strong className="ds-account-plan-name">V0 Plan</strong><Badge>Free</Badge></div></div>
-          <FooterLine>Learn more by visiting v0's <a className="ds-link" href="#pricing" onClick={(event) => event.preventDefault()}>pricing page <ExternalLink aria-hidden="true" /></a>.<Button variant="outline" onClick={() => onAction('Billing settings demonstrated.')}>View Billing Settings</Button></FooterLine>
+          <FooterLine action={<Button variant="outline" onClick={() => onAction('Billing settings demonstrated.')}>View Billing Settings</Button>}>Learn more by visiting v0's <a className="ds-link" href="#pricing" onClick={(event) => event.preventDefault()}>pricing page <ExternalLink aria-hidden="true" /></a>.</FooterLine>
         </div>
       </section>
       <section><h2 className="ds-account-section-title">Teams</h2>
         <div className="ds-account-billing-item">
           <div className="ds-account-billing-item-top"><div className="ds-row"><span className="ds-team-avatar-mark" aria-hidden="true" /><strong className="ds-account-plan-name">{account.team}</strong><Badge>Hobby</Badge><Badge variant="success">Active</Badge></div></div>
-          <FooterLine>Visit {account.team}'s billing settings for details.<Button variant="outline" onClick={() => onAction('Team billing settings demonstrated.')}>View Billing Settings</Button></FooterLine>
+          <FooterLine action={<Button variant="outline" onClick={() => onAction('Team billing settings demonstrated.')}>View Billing Settings</Button>}>Visit {account.team}'s billing settings for details.</FooterLine>
         </div>
       </section>
     </div>
@@ -369,7 +369,7 @@ function TokensPage({ onAction }: { onAction: Notify }) {
         <h1>Tokens</h1>
         <p>These tokens allow other apps to control your whole account. Be careful!</p>
       </div>
-      <AccountCard title="Create Token" description="Enter a unique name for your token to differentiate it from other tokens. Then select the scope for the token." footer={<FooterLine><a href="#access-tokens" className="ds-link" onClick={(event) => event.preventDefault()}>Learn more about Access Tokens <ExternalLink aria-hidden="true" /></a><Button size="sm" onClick={() => onAction(`Create access for ${name} demonstrated locally.`)}>Create</Button></FooterLine>}>
+      <AccountCard title="Create Token" description="Enter a unique name for your token to differentiate it from other tokens. Then select the scope for the token." footer={<FooterLine action={<Button size="sm" onClick={() => onAction(`Create access for ${name} demonstrated locally.`)}>Create</Button>}><a href="#access-tokens" className="ds-link" onClick={(event) => event.preventDefault()}>Learn more about Access Tokens <ExternalLink aria-hidden="true" /></a></FooterLine>}>
         <div className="ds-account-create-token-grid">
           <div><Label htmlFor="token-name">TOKEN NAME</Label><Input id="token-name" value={name} onChange={(event) => setName(event.target.value)} /></div>
           <div><Label htmlFor="token-scope">SCOPE</Label><Select defaultValue="all"><SelectTrigger id="token-scope"><Search aria-hidden="true" /><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">Select scope</SelectItem><SelectItem value="read">Read only</SelectItem></SelectContent></Select></div>
