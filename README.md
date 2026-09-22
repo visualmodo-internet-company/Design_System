@@ -8,9 +8,9 @@ A reusable React interface foundation with a Vercel-dashboard visual direction, 
 
 Stage: **0.1.0 foundation-preview**. The first page is Overview. Account and other standard pages intentionally follow visual approval.
 
-The code, stories, documentation and standalone visual reference are supplied. The creation environment could not resolve registry.npmjs.org, so npm installation, full TypeScript typechecking, ESLint, Vite and Storybook runtime builds could not be validated there. No npm lockfile is fabricated. See **docs/validation.md** for commands actually executed and their results.
+The repository is public and the Storybook is deployed through GitHub Pages at https://visualmodo-internet-company.github.io/Design_System/.
 
-The connected GitHub tool could read the owner's account and work with existing repositories, but did not expose repository creation. This package does not imply a remote repository or public Storybook URL has already been created.
+GitHub Actions has completed dependency installation, source contract tests, strict TypeScript checks, ESLint, the Vite production build, the Storybook production build, Chromium installation, Playwright interaction tests and the automated accessibility scan successfully. No npm lockfile is fabricated. See **docs/validation.md** for the current validation record.
 
 ## Stack
 
@@ -24,7 +24,7 @@ npm run dev          # Example app: http://localhost:5173
 npm run storybook    # Catalog: http://localhost:6006
 ```
 
-After the first successful installation, commit the genuine package-lock.json and use `npm ci` thereafter. The declared versions need integration validation; the presence of a package.json is not proof of a resolved dependency graph.
+GitHub Actions has successfully resolved and built the declared dependency graph. A genuine package-lock.json should still be created and committed before adopting `npm ci` as the default install command.
 
 ## Inspect without installing dependencies
 
@@ -89,15 +89,11 @@ Inspect the current catalog first. A shadcn component can be added on a branch w
 
 ## Public repository
 
-To publish the prepared folder with your own authenticated GitHub CLI, run the helper locally:
+Repository: https://github.com/visualmodo-internet-company/Design_System
 
-```bash
-node scripts/publish-github.mjs
-```
+Public Storybook: https://visualmodo-internet-company.github.io/Design_System/
 
-It targets `visualmodo-internet-company/Design_System`, requires that authenticated account, refuses an existing Git repository or an existing remote repository, validates the project before uploading, and does not use force. It asks for confirmation before creating a public repository. GitHub CLI and Git must already be installed. No access tokens are embedded in the project.
-
-Alternatively create an empty public repository named Design_System and push this folder through your normal Git workflow. Do not upload node_modules, source account HTML or supplied personal screenshots.
+The repository contains no access tokens, source account HTML or supplied personal screenshots.
 
 ## Static publication
 
