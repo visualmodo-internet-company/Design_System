@@ -72,7 +72,7 @@ test('account settings preserves the corrected reference geometry', () => {
   const tokens = text('src/styles/tokens.css');
   const styles = text('src/styles/system.css');
   assert(tokens.includes('--ds-account-width: 928px'));
-  assert(tokens.includes('--ds-font-account-title: 18px'));
+  assert(tokens.includes('--ds-font-account-title: 20px'));
   assert(tokens.includes('--ds-account-input-border: #2c2c2c'));
   assert(styles.includes(".ds-header[data-variant='account'] { height: var(--ds-header-height); }"));
   assert(styles.includes('.ds-account-stack { display: flex; flex-direction: column; gap: var(--ds-space-8); }'));
@@ -88,7 +88,7 @@ test('account settings submenu uses the same 14px interface scale as the referen
   assert(styles.includes('.ds-nav-subitem {'));
   assert(styles.includes('font-size: var(--ds-font-body)'));
   assert(styles.includes('line-height: var(--ds-leading-label)'));
-  assert(styles.includes('font-weight: var(--ds-weight-regular)'));
+  assert(styles.includes('font-weight: var(--ds-weight-medium)'));
 });
 
 test('account navigation keeps the supplied settings destinations in a reusable shell', () => {
