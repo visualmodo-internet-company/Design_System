@@ -62,6 +62,11 @@ const demoAccessRows = [
 ];
 
 export const ACCOUNT_PAGE_TITLES: Record<string, string> = {
+  'account-overview': 'Overview',
+  'account-domains': 'Domains',
+  'account-activity': 'Activity',
+  'account-invites': 'Invites',
+  'account-support': 'Support',
   'account-settings': 'Settings',
   'account-authentication': 'Authentication',
   'account-sign-in': 'Sign in with Vercel',
@@ -402,6 +407,19 @@ function TokensPage({ onAction }: { onAction: Notify }) {
   );
 }
 
+function AccountPlaceholderPage({ activeId }: { activeId: string }) {
+  const title = ACCOUNT_PAGE_TITLES[activeId] ?? 'Account';
+  return (
+    <div className="ds-account-standalone">
+      <div className="ds-account-page-heading">
+        <h1>{title}</h1>
+        <p>This navigation destination is included for shell consistency. A page-specific visual reference has not been supplied yet.</p>
+      </div>
+      <div className="ds-account-empty-large"><span className="ds-empty-icon"><FileSearch /></span><strong>{title}</strong><p>Use the shared account shell when this page is designed.</p></div>
+    </div>
+  );
+}
+
 export function AccountPageRouter({ activeId, onAction }: { activeId: string; onAction: Notify }) {
   switch (activeId) {
     case 'account-authentication': return <AuthenticationPage onAction={onAction} />;
@@ -410,7 +428,13 @@ export function AccountPageRouter({ activeId, onAction }: { activeId: string; on
     case 'account-billing-items': return <BillingItemsPage onAction={onAction} />;
     case 'account-invoices': return <InvoicesPage />;
     case 'account-tokens': return <TokensPage onAction={onAction} />;
-    case 'account-settings':
+    case 'account-settings': return <SettingsPage onAction={onAction} />;
+    case 'account-overview':
+    case 'account-domains':
+    case 'account-activity':
+    case 'account-invites':
+    case 'account-support':
+      return <AccountPlaceholderPage activeId={activeId} />;
     default: return <SettingsPage onAction={onAction} />;
   }
 }
