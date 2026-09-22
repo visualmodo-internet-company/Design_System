@@ -6,7 +6,7 @@ A reusable React interface foundation with a Vercel-dashboard visual direction, 
 
 ## Delivery status — read first
 
-Stage: **0.1.0 foundation-preview**. The first page is Overview. Account and other standard pages intentionally follow visual approval.
+Stage: **0.2.0 account-reference**. The shared foundation, Overview example, contextual navigation, and the approved Account/Settings reference set are implemented. Additional product pages still require their own visual references.
 
 The repository is public and the Storybook is deployed through GitHub Pages at https://visualmodo-internet-company.github.io/Design_System/.
 
@@ -66,7 +66,7 @@ src/components/ui/  25 UI primitives
 src/blocks/         Reusable state, navigation and composition blocks
 src/layouts/        ApplicationShell and ContentLayout
 src/styles/         Canonical tokens, component CSS and Tailwind aliases
-src/pages/          Overview example, not application business logic
+src/pages/          Overview plus neutral Account/Settings reference pages
 src/fixtures/       Neutral demo data and navigation
 stories/            Foundations, components, patterns, layouts, pages, AI rules
 .storybook/         Docs, controls, themes, viewport and accessibility
