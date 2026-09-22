@@ -36,6 +36,7 @@
   --ds-warning: #8c5300; --ds-warning-subtle: #fff4d6;
   --ds-danger-fill: #c42127; --ds-destructive: #c42127; --ds-destructive-foreground: #ffffff; --ds-destructive-subtle: #fff0f0;
   --ds-overlay: rgb(0 0 0 / 45%); --ds-shadow-color: rgb(0 0 0 / 12%);
+  --ds-scrollbar-track: var(--ds-background); --ds-scrollbar-thumb: #c9c9c9; --ds-scrollbar-thumb-hover: #a8a8a8;
   --ds-preview-muted: #737373; --ds-chart: #0070f3; --ds-preview-background: #ffffff;
   --ds-shadow-sm: 0 1px 2px var(--ds-shadow-color);
   --ds-shadow-popover: 0 8px 24px var(--ds-shadow-color);
@@ -56,6 +57,7 @@
   --ds-warning: #ffb224; --ds-warning-subtle: #2e2008;
   --ds-destructive: #e5484d; --ds-destructive-foreground: #ffffff; --ds-destructive-subtle: #341518;
   --ds-overlay: rgb(0 0 0 / 65%); --ds-shadow-color: rgb(0 0 0 / 45%);
+  --ds-scrollbar-track: var(--ds-background); --ds-scrollbar-thumb: #454545; --ds-scrollbar-thumb-hover: #878787;
   --ds-chart: #0090ff;
   color-scheme: dark;
 }
