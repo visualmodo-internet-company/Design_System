@@ -2,7 +2,7 @@
 
 ## Scope and provenance
 
-Reference date: 2026-09-22. Dashboard screenshots plus exported HTML for the shell and team scope switcher were supplied by the owner. Public Vercel Geist Colors, Typography, Introduction and Font pages were consulted on that date. The current public shadcn Button source was inspected (reported modified 2026-09-04).
+Reference date: 2026-09-22. Dashboard screenshots plus exported HTML for the shell and team scope switcher were supplied by the owner. A later reference set added Account Settings, Authentication, Sign in with Vercel, Billing Information, Billing Items, Invoices and Tokens screenshots. Public Vercel Geist Colors, Typography, Introduction and Font pages were consulted on that date. The current public shadcn Button source was inspected (reported modified 2026-09-04).
 
 The private Vercel application source was not accessed. Public compiled CSS links in the supplied HTML could not be downloaded in this environment. The HTML contains some values directly but does not contain all computed styles. Screenshots show one theme and some loading states; they do not prove all interaction trajectories.
 
@@ -59,6 +59,24 @@ The later supplied team switcher HTML confirms the desktop composition used by t
 * The active team row contains the 20 px avatar, team name, plan badge and selected check indicator.
 
 The reference also separates the team label action from the scope switcher trigger. That separation is part of the reusable shell contract and should not be collapsed back into one full-width hover button.
+
+## Account page observations
+
+The supplied Account reference set establishes a distinct shell state:
+
+* The project/team selector is absent. The sidebar starts with Back, followed by the same Find control.
+* Primary account destinations remain visible above a divider, while Settings keeps its text-only child links visible at the same time.
+* The global header keeps the current account page title centered.
+* Account content uses a narrow centered column, with repeated bordered cards and compact 32 px footer actions.
+* Form fields inside Account cards use the 36 px standard control height.
+* Settings cards consistently separate explanatory content from a footer through a full-width border.
+* Authentication uses bordered row groups with icon, title/description and trailing action.
+* Billing Items separates Personal and Teams into independent titled sections.
+* Invoices combines one 36 px select with a large bordered empty panel.
+* Tokens combines a create form, segmented status filter and dense table.
+* Destructive account areas use the shared destructive semantic token rather than an independent red palette.
+
+The implementation keeps the geometry and composition reusable while replacing account-export identifiers, real emails, avatar imagery and access credentials with neutral fictional examples.
 
 ## Observed in screenshot pixels
 
