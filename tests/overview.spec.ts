@@ -41,7 +41,7 @@ test('page-level controls use 36px while compact card actions use 32px', async (
   expect(await height(page.getByRole('button', { name: 'Instant rollback' }))).toBe(36);
   expect(await height(page.getByRole('button', { name: 'Visit', exact: true }))).toBe(36);
   expect(await height(page.getByRole('button', { name: 'Visit options' }))).toBe(36);
-  expect(await height(page.getByRole('button', { name: 'Enable analytics' }))).toBe(32);
+  expect(await height(page.locator('.ds-analytics-empty').getByRole('button', { name: 'Enable analytics' }))).toBe(32);
   expect(await height(page.getByRole('button', { name: 'Documentation' }))).toBe(32);
 });
 
