@@ -74,6 +74,50 @@ test('contextual sidebar back control keeps its label centered with the icon anc
   expect((geometry?.iconLeft ?? 0) - (geometry?.buttonLeft ?? 0)).toBeLessThan(20);
 });
 
+test('account settings pages are navigable from the user menu with the complete settings sidebar', async ({ page }) => {
+  await page.getByRole('button', { name: 'Open user menu' }).click();
+  await page.getByRole('menuitem', { name: 'Account settings' }).click();
+  await expect(page.getByRole('main')).toContainText('Display Name');
+
+  const expectedLinks = ['Authentication', 'Sign in with Vercel', 'Billing Information', 'Billing Items', 'Invoices', 'Tokens'];
+  for (const label of expectedLinks) await expect(page.getByRole('link', { name: label, exact: true })).toBeVisible();
+
+  await page.getByRole('link', { name: 'Authentication', exact: true }).click();
+  await expect(page.getByRole('main')).toContainText('Sign-in Methods');
+  await expect(page.getByRole('main')).toContainText('Two-Factor Authentication');
+
+  await page.getByRole('link', { name: 'Sign in with Vercel', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Sign in with Vercel', exact: true })).toBeVisible();
+  await expect(page.getByRole('searchbox', { name: 'Filter applications' })).toBeVisible();
+
+  await page.getByRole('link', { name: 'Billing Information', exact: true }).click();
+  await expect(page.getByRole('textbox', { name: 'Invoice Email Recipient' })).toBeVisible();
+  await expect(page.getByRole('textbox', { name: 'Company Name' })).toBeVisible();
+
+  await page.getByRole('link', { name: 'Billing Items', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Personal' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Teams' })).toBeVisible();
+
+  await page.getByRole('link', { name: 'Invoices', exact: true }).click();
+  await expect(page.getByText('No Invoices', { exact: true })).toBeVisible();
+
+  await page.getByRole('link', { name: 'Tokens', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Tokens', exact: true })).toBeVisible();
+  await expect(page.getByRole('table', { name: 'Access tokens' })).toBeVisible();
+
+  await page.getByRole('button', { name: 'Back', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Project overview' })).toHaveCount(1);
+});
+
+test('account pages do not expose personal account export identifiers', async ({ page }) => {
+  await page.getByRole('button', { name: 'Open user menu' }).click();
+  await page.getByRole('menuitem', { name: 'Account settings' }).click();
+  const text = await page.getByRole('main').innerText();
+  expect(text).not.toContain('contact-');
+  expect(text).not.toContain('team_');
+  expect(text).not.toContain('dpl_');
+});
+
 test('team switcher matches the scoped popover interaction', async ({ page }) => {
   const trigger = page.getByRole('button', { name: 'Switch team' });
   await trigger.click();
