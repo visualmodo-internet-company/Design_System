@@ -8,6 +8,15 @@ Sidebar fixa desktop, header sticky e uma única área `main`. Header usa três 
 
 A largura começa em 256 px; o resizer permite 240–400 px por ponteiro ou setas, Home e End. A sidebar pode recolher. Preferências usam um storageKey próprio e falham de maneira segura quando storage não está disponível. Uma aplicação deve definir seu namespace.
 
+
+### Team switcher
+
+O seletor de team no topo da sidebar segue um contrato visual específico. O nome, avatar e badge ficam em uma área neutra, sem background de hover. Apenas o botão de chevrons à direita recebe o estado de hover, focus e open.
+
+O painel abre alinhado à esquerda da sidebar com 384 px no desktop. Ele contém, nesta ordem, busca de teams com atalho Esc, team ativo com check, área informativa central e ação Create Team separada por borda. O componente fica em `src/blocks/team-switcher.tsx` e deve ser reutilizado, não recriado dentro de páginas.
+
+A ação do nome do team é separada do botão que abre o seletor, reproduzindo o comportamento de contexto da referência. Consumers podem mapear `onOpenTeam`, `onSelectTeam` e `onCreateTeam` para router ou ações reais sem alterar a composição visual.
+
 ## Content Layout
 
 Composição de PageHeader e children, para ser usada dentro do shell. Não gera outra sidebar, outro header global nem outro `main`. Pode receber ações junto do título.
