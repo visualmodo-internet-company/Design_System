@@ -1,13 +1,12 @@
 import { Fragment } from 'react';
-import { ArrowLeft, Bell, ChevronRight, MoreHorizontal } from 'lucide-react';
+import { ArrowLeft, Bell, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { TeamSwitcher } from './team-switcher';
 import { SidebarSearch } from './sidebar-search';
+import { SidebarUserMenu } from './user-menu';
 import type { NavigationGroup, NavigationItem } from './navigation';
-export interface SidebarProps { groups: NavigationGroup[]; activeId: string; onNavigate: (id: string) => void; workspace: string; workspacePlan?: string; project: string; userName: string; searchOpen: boolean; onSearchOpenChange: (open: boolean) => void; onAction: (action: string) => void; variant?: 'project' | 'account'; onBack?: () => void; onClose?: () => void }
-export function Sidebar({ groups, activeId, onNavigate, workspace, workspacePlan, project, userName, searchOpen, onSearchOpenChange, onAction, variant = 'project', onBack, onClose }: SidebarProps) {
+export interface SidebarProps { groups: NavigationGroup[]; activeId: string; onNavigate: (id: string) => void; workspace: string; workspacePlan?: string; project: string; userName: string; userEmail?: string; searchOpen: boolean; onSearchOpenChange: (open: boolean) => void; onAction: (action: string) => void; variant?: 'project' | 'account'; onBack?: () => void; onClose?: () => void }
+export function Sidebar({ groups, activeId, onNavigate, workspace, workspacePlan, project, userName, userEmail, searchOpen, onSearchOpenChange, onAction, variant = 'project', onBack, onClose }: SidebarProps) {
   const initials = userName.trim().split(/\s+/).slice(0, 2).map((part) => part.charAt(0)).join('').toUpperCase() || 'U';
   const parent = variant === 'project' ? groups.flatMap((group) => group.items).find((item) => item.children?.some((child) => child.id === activeId)) : undefined;
   const navigate = (id: string) => { onNavigate(id); onClose?.(); };
@@ -35,6 +34,6 @@ export function Sidebar({ groups, activeId, onNavigate, workspace, workspacePlan
       />
     </div>
     <nav aria-label="Main navigation" className="ds-sidebar-nav"><div key={parent?.id ?? variant} className="ds-nav-panel">{parent ? <><Button variant="ghost" className="ds-nav-link ds-nav-back" onClick={() => navigate('overview')}><ArrowLeft aria-hidden="true" /><span className="ds-nav-back-label">Back to overview</span></Button><p className="ds-menu-label">{parent.label}</p>{parent.children?.map(renderItem)}</> : groups.map((group, index) => <Fragment key={group.id}>{index > 0 && <hr className="ds-nav-divider" />}{group.items.map(renderItem)}</Fragment>)}</div></nav>
-    <div className="ds-sidebar-foot"><DropdownMenu><DropdownMenuTrigger asChild><button type="button" className="ds-user-trigger" aria-label="Open user menu"><Avatar className="ds-avatar--small"><AvatarFallback aria-hidden="true">{initials}</AvatarFallback></Avatar><span className="ds-truncate ds-grow">{userName}</span><MoreHorizontal aria-hidden="true" /></button></DropdownMenuTrigger><DropdownMenuContent side="top" align="start"><DropdownMenuLabel>{userName} · Demo user</DropdownMenuLabel><DropdownMenuItem onSelect={() => navigate('account-settings')}>Account settings</DropdownMenuItem><DropdownMenuItem onSelect={() => onAction('This is a UI demo. There is no authentication session to sign out of.')}>Sign out</DropdownMenuItem></DropdownMenuContent></DropdownMenu>{variant === 'project' && <Button variant="ghost" size="icon-sm" aria-label="Notifications" onClick={() => onAction('You are up to date. Notifications are demonstrated locally.')}><Bell aria-hidden="true" /></Button>}</div>
+    <div className="ds-sidebar-foot"><SidebarUserMenu userName={userName} userEmail={userEmail} initials={initials} onOpenSettings={() => navigate('account-settings')} onAction={onAction} />{variant === 'project' && <Button variant="ghost" size="icon-sm" aria-label="Notifications" onClick={() => onAction('You are up to date. Notifications are demonstrated locally.')}><Bell aria-hidden="true" /></Button>}</div>
   </div>;
 }
