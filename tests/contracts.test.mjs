@@ -92,6 +92,17 @@ test('sidebar user menu preserves the supplied Vercel account menu contract', ()
   assert(styles.includes('.ds-user-menu-status-dot { width: 10px; height: 10px'));
 });
 
+test('Account fields keep reference-specific hover borders and remove icon', () => {
+  const source = text('src/pages/account-pages.tsx');
+  const styles = text('src/styles/system.css');
+  assert(source.includes('ds-account-hover-field'));
+  assert(source.includes('aria-label="Remove default team"'));
+  assert(source.includes('<X aria-hidden="true" />'));
+  assert(styles.includes('.ds-account-hover-field:hover { border-color: var(--ds-border-strong); }'));
+  assert(!styles.includes('.ds-account-card .ds-input:hover,'));
+  assert(styles.includes('.ds-account-team-remove svg { width: var(--ds-space-4); height: var(--ds-space-4); stroke-width: 1.5; }'));
+});
+
 test('account settings preserves the corrected reference geometry', () => {
   const tokens = text('src/styles/tokens.css');
   const styles = text('src/styles/system.css');
