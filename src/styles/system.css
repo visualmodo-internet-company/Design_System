@@ -295,8 +295,8 @@
   .ds-project-results { padding: var(--ds-space-2); }
   .ds-project-option { display: flex; align-items: center; gap: var(--ds-space-3); width: 100%; height: var(--ds-space-10); padding: 0 12px; border: 0; border-radius: var(--ds-radius-md); background: transparent; color: var(--ds-foreground); text-align: left; font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-medium); }
   .ds-project-option:hover, .ds-project-option:focus-visible { background: var(--ds-hover); }
-  .ds-project-mark { position: relative; width: var(--ds-space-5); height: var(--ds-space-5); flex: none; overflow: hidden; border-radius: var(--ds-radius-full); background: #050505; }
-  .ds-project-mark::after { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 50%; background: #151515; }
+  .ds-project-mark { position: relative; width: var(--ds-space-5); height: var(--ds-space-5); flex: none; overflow: hidden; border-radius: var(--ds-radius-full); background: var(--ds-background); }
+  .ds-project-mark::after { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 50%; background: var(--ds-hover); }
 
   .ds-project-create-wrap { padding: var(--ds-space-2); border-top: var(--ds-border-width) solid var(--ds-border); }
   .ds-project-create { display: flex; align-items: center; gap: var(--ds-space-3); width: 100%; height: var(--ds-space-10); padding: 0 12px; border: 0; border-radius: var(--ds-radius-md); background: transparent; color: var(--ds-foreground); text-align: left; font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-medium); }
