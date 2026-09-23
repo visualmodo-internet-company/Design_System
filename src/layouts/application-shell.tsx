@@ -8,8 +8,8 @@ import { Sidebar } from '@/blocks/sidebar';
 import { ThemeSwitcher } from '@/blocks/theme-switcher';
 import type { NavigationGroup } from '@/blocks/navigation';
 import { useSidebar } from '@/hooks/use-sidebar';
-export interface ApplicationShellProps { children: ReactNode; navigation: NavigationGroup[]; activeId: string; onNavigate: (id: string) => void; title: string; workspace?: string; workspacePlan?: string; project?: string; userName?: string; onAction: (message: string) => void; storageKey?: string; variant?: 'project' | 'account'; onBack?: () => void }
-export function ApplicationShell({ children, navigation, activeId, onNavigate, title, workspace = 'Workspace', workspacePlan, project = 'Project', userName = 'User', onAction, storageKey, variant = 'project', onBack }: ApplicationShellProps) {
+export interface ApplicationShellProps { children: ReactNode; navigation: NavigationGroup[]; activeId: string; onNavigate: (id: string) => void; title: string; workspace?: string; workspacePlan?: string; project?: string; userName?: string; userEmail?: string; onAction: (message: string) => void; storageKey?: string; variant?: 'project' | 'account'; onBack?: () => void }
+export function ApplicationShell({ children, navigation, activeId, onNavigate, title, workspace = 'Workspace', workspacePlan, project = 'Project', userName = 'User', userEmail = 'user@example.com', onAction, storageKey, variant = 'project', onBack }: ApplicationShellProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const mobileTrigger = useRef<HTMLButtonElement>(null);
@@ -35,6 +35,7 @@ export function ApplicationShell({ children, navigation, activeId, onNavigate, t
     workspacePlan,
     project,
     userName,
+    userEmail,
     searchOpen,
     onSearchOpenChange: setSearchOpen,
     onAction,
