@@ -60,6 +60,19 @@ The later supplied team switcher HTML confirms the desktop composition used by t
 
 The reference also separates the team label action from the scope switcher trigger. That separation is part of the reusable shell contract and should not be collapsed back into one full-width hover button.
 
+## Header project switcher observations
+
+The supplied project-picker screenshots provide direct pixel evidence:
+
+* The open trigger is approximately 40 px high and uses the hover/active surface.
+* The picker is approximately 440 px wide.
+* The search header is approximately 52 px high and contains `Find Project...` with an Esc key control on the right.
+* The project region and Create Project region each use 8 px outer padding around a 40 px row.
+* A full-width separator divides project selection from Create Project.
+* Project and Create rows are transparent at rest; the screenshot examples show the shared hover fill only on the row currently hovered.
+* Project identity uses a 20 px circular mark.
+* The outer panel uses the same subtle border and 12 px popover radius as the other reconstructed pickers.
+
 ## Sidebar user menu observations
 
 The supplied account sidebar screenshots define a distinct user dropdown:
