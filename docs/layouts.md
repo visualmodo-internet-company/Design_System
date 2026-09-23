@@ -18,6 +18,14 @@ O painel abre alinhado à esquerda da sidebar com 384 px no desktop. Ele contém
 A ação do nome do team é separada do botão que abre o seletor, reproduzindo o comportamento de contexto da referência. Consumers podem mapear `onOpenTeam`, `onSelectTeam` e `onCreateTeam` para router ou ações reais sem alterar a composição visual.
 
 
+### Project switcher
+
+O seletor de projetos do header é um Popover dedicado. O trigger usa 40 px de altura e mantém o label de contexto atual com chevrons à direita. Quando aberto, recebe o mesmo background de hover.
+
+O painel desktop usa 440 px de largura e abre alinhado à esquerda do trigger com 2 px de offset. A primeira área é um search header de 52 px com `Find Project...` e `Esc`. A área de resultados tem 8 px de padding e project rows de 40 px. Depois há separator full-width e uma área com 8 px de padding para `Create Project`, também com 40 px.
+
+Project e Create ficam transparentes em repouso e recebem o hover fill compartilhado. O componente canônico fica em `src/blocks/project-switcher.tsx`.
+
 ### User menu
 
 O menu do usuário no rodapé da sidebar é um pattern dedicado, não um Dropdown Menu genérico. No desktop ele usa 330 px de largura, abre acima do trigger e mantém o mesmo alinhamento esquerdo da área do usuário.
