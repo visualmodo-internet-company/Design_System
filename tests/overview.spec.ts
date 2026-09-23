@@ -74,6 +74,33 @@ test('contextual sidebar back control keeps its label centered with the icon anc
   expect((geometry?.iconLeft ?? 0) - (geometry?.buttonLeft ?? 0)).toBeLessThan(20);
 });
 
+test('header project switcher matches the supplied Vercel picker geometry', async ({ page }) => {
+  const trigger = page.getByRole('button', { name: 'Switch project' });
+  expect(Math.round((await trigger.boundingBox())?.height ?? 0)).toBe(40);
+
+  await trigger.click();
+  const panel = page.getByRole('dialog', { name: 'Switch project' });
+  await expect(panel).toBeVisible();
+  expect(Math.round((await panel.boundingBox())?.width ?? 0)).toBe(440);
+
+  const search = page.getByRole('searchbox', { name: 'Find Project' });
+  await expect(search).toBeFocused();
+  const searchRow = panel.locator('.ds-project-search-row');
+  expect(Math.round((await searchRow.boundingBox())?.height ?? 0)).toBe(52);
+
+  const projectOption = panel.locator('.ds-project-option');
+  expect(Math.round((await projectOption.boundingBox())?.height ?? 0)).toBe(40);
+  expect(await projectOption.evaluate((node) => getComputedStyle(node).backgroundColor)).toBe('rgba(0, 0, 0, 0)');
+
+  const create = panel.getByRole('button', { name: 'Create Project' });
+  expect(Math.round((await create.boundingBox())?.height ?? 0)).toBe(40);
+  await create.hover();
+  expect(await create.evaluate((node) => getComputedStyle(node).borderRadius)).toBe('6px');
+
+  await page.keyboard.press('Escape');
+  await expect(panel).toHaveCount(0);
+});
+
 test('sidebar user menu matches the supplied account dropdown composition', async ({ page }) => {
   await page.getByRole('button', { name: 'Open user menu' }).click();
   const menu = page.getByRole('menu');
