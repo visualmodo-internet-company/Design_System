@@ -246,8 +246,31 @@
   .ds-nav-divider { height: var(--ds-border-width); background: var(--ds-border-subtle); border: 0; margin: var(--ds-space-1) 0; }
   .ds-sidebar-foot { display: flex; gap: var(--ds-space-1); align-items: center; padding: var(--ds-space-2); margin-top: auto; }
   .ds-user-trigger { border: 0; background: transparent; min-height: var(--ds-control-md); padding: 0 var(--ds-space-2); border-radius: var(--ds-radius-md); display: flex; align-items: center; gap: var(--ds-space-2); min-width: 0; flex: 1; text-align: left; }
-  .ds-user-trigger:hover { background: var(--ds-hover); }
+  .ds-user-trigger:hover, .ds-user-trigger[data-state='open'] { background: var(--ds-hover); }
   .ds-user-trigger > svg { width: var(--ds-space-4); height: var(--ds-space-4); color: var(--ds-muted-foreground); }
+
+  .ds-user-menu { width: min(330px, calc(100vw - var(--ds-space-4))); min-width: 0; padding: 0; overflow: hidden; border-color: var(--ds-border); border-radius: var(--ds-radius-xl); background: var(--ds-popover); box-shadow: var(--ds-shadow-popover); }
+  .ds-user-menu-section { padding: var(--ds-space-2); }
+  .ds-user-menu-section--profile { padding-bottom: var(--ds-space-2); }
+  .ds-user-menu-section--links { display: flex; flex-direction: column; gap: 0; }
+  .ds-user-menu-section--status { padding-block: var(--ds-space-1); }
+  .ds-user-menu-separator { margin: 0; background: var(--ds-border); }
+
+  .ds-user-menu-profile { min-height: 56px; padding: var(--ds-space-2); justify-content: space-between; gap: var(--ds-space-3); }
+  .ds-user-menu-profile-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; }
+  .ds-user-menu-profile-copy strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-semibold); color: var(--ds-foreground); }
+  .ds-user-menu-profile-copy > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-regular); color: var(--ds-muted-foreground); }
+  .ds-user-menu-profile > svg { width: var(--ds-space-5); height: var(--ds-space-5); color: var(--ds-muted-foreground); }
+
+  .ds-user-menu-item { min-height: var(--ds-space-10); justify-content: space-between; padding: 0 var(--ds-space-2); font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-medium); }
+  .ds-user-menu-item > svg { width: 18px; height: 18px; margin-left: auto; color: var(--ds-muted-foreground); stroke-width: 1.7; }
+
+  .ds-user-menu-upgrade { min-height: var(--ds-control-md); margin-top: var(--ds-space-2); justify-content: center; border-radius: var(--ds-radius-md); background: var(--ds-primary); color: var(--ds-primary-foreground); font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-medium); }
+  .ds-user-menu-upgrade[data-highlighted] { background: var(--ds-primary-hover); color: var(--ds-primary-foreground); }
+
+  .ds-user-menu-status { min-height: var(--ds-space-10); justify-content: space-between; padding: 0 var(--ds-space-2); color: var(--ds-link); font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-regular); }
+  .ds-user-menu-status[data-highlighted] { background: var(--ds-hover); color: var(--ds-link); }
+  .ds-user-menu-status-dot { width: 10px; height: 10px; flex: none; border-radius: var(--ds-radius-full); background: var(--ds-info); }
   .ds-sidebar-toggle { position: absolute; right: calc(-1 * var(--ds-space-3)); top: 50%; width: var(--ds-space-6); height: var(--ds-space-6); display: grid; place-content: center; border: var(--ds-border-width) solid var(--ds-border-strong); border-radius: var(--ds-radius-full); background: var(--ds-card); opacity: 0; transition: opacity var(--ds-duration-fast) var(--ds-ease-panel); }
   .ds-sidebar-toggle svg { width: var(--ds-space-3); height: var(--ds-space-3); }
   .ds-sidebar:hover .ds-sidebar-toggle, .ds-sidebar-toggle:focus-visible { opacity: 1; }
