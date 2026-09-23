@@ -68,6 +68,17 @@ test('source and generated preview exclude account-export identifiers and secret
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('sidebar user menu preserves the supplied Vercel account menu contract', () => {
+  const source = text('src/blocks/user-menu.tsx');
+  const styles = text('src/styles/system.css');
+  for (const label of ['Feedback', 'Home Page', 'Changelog', 'Help', 'Docs', 'Log Out', 'Upgrade to Pro', 'All systems normal.']) assert(source.includes(label), label);
+  assert(styles.includes('.ds-user-menu { width: min(330px'));
+  assert(styles.includes('.ds-user-menu-profile { min-height: 56px'));
+  assert(styles.includes('.ds-user-menu-item { min-height: var(--ds-space-10)'));
+  assert(styles.includes('.ds-user-menu-upgrade { min-height: var(--ds-control-md)'));
+  assert(styles.includes('.ds-user-menu-status-dot { width: 10px; height: 10px'));
+});
+
 test('account settings preserves the corrected reference geometry', () => {
   const tokens = text('src/styles/tokens.css');
   const styles = text('src/styles/system.css');
