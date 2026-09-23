@@ -86,6 +86,15 @@ The supplied account sidebar screenshots define a distinct user dropdown:
 * The final status area is separated by a full-width divider and shows All systems normal with a blue dot on the right.
 * The outer menu uses the 12 px popover radius and subtle border.
 
+## Account Settings hover and remove-control observations
+
+The later Settings comparison clarifies two interaction details:
+
+* Only the standalone Display Name input visibly strengthens its border on hover.
+* Username's grouped field, Default Team chip, billing fields and other Account form controls keep the same base border on hover.
+* Default Team uses a real 16 px X glyph with a light 1.5 stroke, centered in a small transparent hit area at the far right of the chip.
+* The X itself changes foreground emphasis on hover but does not introduce a filled hover surface.
+
 ## Account Settings measured geometry
 
 A direct comparison between the supplied Settings reference and the first implementation exposed several measurable mismatches. The corrected account contract records the reference geometry rather than inheriting generic card defaults:
