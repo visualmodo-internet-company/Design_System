@@ -209,6 +209,14 @@ test('account settings matches the reference card geometry and footer alignment'
   expect(Math.round((await addAnother.boundingBox())?.width ?? 0)).toBeLessThan(180);
 });
 
+test('sidebar user trigger uses the same radius as navigation items', async ({ page }) => {
+  const userTrigger = page.getByRole('button', { name: 'Open user menu' });
+  const navItem = page.getByRole('link', { name: 'Overview', exact: true });
+  const radius = async (locator: ReturnType<typeof page.getByRole>) =>
+    locator.evaluate((node) => getComputedStyle(node).borderRadius);
+  expect(await radius(userTrigger)).toBe(await radius(navItem));
+});
+
 test('team switcher matches the scoped popover interaction', async ({ page }) => {
   const trigger = page.getByRole('button', { name: 'Switch team' });
   await trigger.click();
