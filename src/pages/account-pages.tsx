@@ -128,7 +128,7 @@ function SettingsPage({ onAction }: { onAction: Notify }) {
         description="Please enter your full name, or a display name you are comfortable with."
         footer={<FooterLine action={<Button size="sm" disabled={!displayName.trim()} onClick={() => onAction('Display name saved locally for the demo.')}>Save</Button>}>Please use 32 characters at maximum.</FooterLine>}
       >
-        <Input aria-label="Display Name" value={displayName} maxLength={32} onChange={(event) => setDisplayName(event.target.value)} className="ds-account-short-field ds-account-hover-field" />
+        <Input aria-label="Display Name" value={displayName} maxLength={32} onChange={(event) => setDisplayName(event.target.value)} className="ds-account-short-field" />
       </AccountCard>
 
       <AccountCard
