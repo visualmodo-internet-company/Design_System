@@ -74,6 +74,30 @@ test('contextual sidebar back control keeps its label centered with the icon anc
   expect((geometry?.iconLeft ?? 0) - (geometry?.buttonLeft ?? 0)).toBeLessThan(20);
 });
 
+test('sidebar user menu matches the supplied account dropdown composition', async ({ page }) => {
+  await page.getByRole('button', { name: 'Open user menu' }).click();
+  const menu = page.getByRole('menu');
+  await expect(menu).toBeVisible();
+
+  const box = await menu.boundingBox();
+  expect(Math.round(box?.width ?? 0)).toBe(330);
+
+  await expect(menu.getByRole('menuitem', { name: 'Account settings' })).toBeVisible();
+  for (const name of ['Feedback', 'Home Page', 'Changelog', 'Help', 'Docs', 'Log Out', 'Upgrade to Pro', 'All systems normal.']) {
+    await expect(menu.getByRole('menuitem', { name, exact: true })).toBeVisible();
+  }
+
+  const upgrade = menu.getByRole('menuitem', { name: 'Upgrade to Pro' });
+  expect(Math.round((await upgrade.boundingBox())?.height ?? 0)).toBe(36);
+
+  const status = menu.getByRole('menuitem', { name: 'All systems normal.' });
+  await expect(status.locator('.ds-user-menu-status-dot')).toBeVisible();
+
+  const home = menu.getByRole('menuitem', { name: 'Home Page' });
+  await home.hover();
+  expect(await home.evaluate((node) => getComputedStyle(node).borderRadius)).toBe('6px');
+});
+
 test('account settings pages are navigable from the user menu with the complete settings sidebar', async ({ page }) => {
   await page.getByRole('button', { name: 'Open user menu' }).click();
   await page.getByRole('menuitem', { name: 'Account settings' }).click();
