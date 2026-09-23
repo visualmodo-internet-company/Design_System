@@ -18,6 +18,14 @@ O painel abre alinhado à esquerda da sidebar com 384 px no desktop. Ele contém
 A ação do nome do team é separada do botão que abre o seletor, reproduzindo o comportamento de contexto da referência. Consumers podem mapear `onOpenTeam`, `onSelectTeam` e `onCreateTeam` para router ou ações reais sem alterar a composição visual.
 
 
+### User menu
+
+O menu do usuário no rodapé da sidebar é um pattern dedicado, não um Dropdown Menu genérico. No desktop ele usa 330 px de largura, abre acima do trigger e mantém o mesmo alinhamento esquerdo da área do usuário.
+
+A composição segue esta ordem: perfil com nome, email e Settings à direita; separator; Feedback, Home Page, Changelog, Help, Docs e Log Out com ícones alinhados à direita; ação Upgrade to Pro de 36 px; separator; status All systems normal com dot azul à direita. Rows comuns usam 40 px e radius de 6 px no hover.
+
+O componente canônico fica em `src/blocks/user-menu.tsx`.
+
 ### Sidebar search
 
 O botão Find da sidebar abre um painel de busca no mesmo eixo visual do seletor de team. O painel começa sobre a posição do próprio controle de busca, tem largura desktop de 440 px, cabeçalho de 56 px com ícone, input e Esc, e lista de resultados com linhas de 54 px.
