@@ -46,7 +46,7 @@ export function SidebarUserMenu({
 
       <DropdownMenuContent className="ds-user-menu" side="top" align="start" sideOffset={8}>
         <div className="ds-user-menu-section ds-user-menu-section--profile">
-          <DropdownMenuItem className="ds-user-menu-profile" onSelect={onOpenSettings}>
+          <DropdownMenuItem className="ds-user-menu-profile" aria-label="Account settings" onSelect={onOpenSettings}>
             <span className="ds-user-menu-profile-copy">
               <strong className="ds-truncate">{userName}</strong>
               <span className="ds-truncate">{userEmail}</span>
