@@ -215,28 +215,35 @@ test('account Settings typography follows the supplied Geist heading and copy cl
   }
 });
 
-test('Account hover borders and Default Team remove icon match the supplied reference', async ({ page }) => {
+test('all standard inputs use the shared interactive border on hover and active states', async ({ page }) => {
+  const interactiveBorder = async () => page.evaluate(() => {
+    const probe = document.createElement('span');
+    probe.style.color = 'var(--ds-control-border-hover)';
+    document.body.append(probe);
+    const value = getComputedStyle(probe).color;
+    probe.remove();
+    return value;
+  });
+  const target = await interactiveBorder();
+
+  const search = page.locator('.ds-toolbar .ds-search');
+  await search.hover();
+  expect(await search.evaluate((node) => getComputedStyle(node).borderTopColor)).toBe(target);
+
   await page.getByRole('button', { name: 'Open user menu' }).click();
   await page.getByRole('menuitem', { name: 'Account settings' }).click();
 
-  const borderColor = async (locator: ReturnType<typeof page.getByRole>) =>
-    locator.evaluate((node) => getComputedStyle(node).borderTopColor);
-
   const display = page.getByRole('textbox', { name: 'Display Name' });
-  const displayBefore = await borderColor(display);
   await display.hover();
-  const displayAfter = await borderColor(display);
-  expect(displayAfter).not.toBe(displayBefore);
+  expect(await display.evaluate((node) => getComputedStyle(node).borderTopColor)).toBe(target);
 
   const usernameGroup = page.locator('.ds-account-input-group');
-  const usernameBefore = await usernameGroup.evaluate((node) => getComputedStyle(node).borderTopColor);
   await page.getByRole('textbox', { name: 'Username' }).hover();
-  expect(await usernameGroup.evaluate((node) => getComputedStyle(node).borderTopColor)).toBe(usernameBefore);
+  expect(await usernameGroup.evaluate((node) => getComputedStyle(node).borderTopColor)).toBe(target);
 
   const teamChip = page.locator('.ds-account-team-chip');
-  const teamBefore = await teamChip.evaluate((node) => getComputedStyle(node).borderTopColor);
   await teamChip.hover();
-  expect(await teamChip.evaluate((node) => getComputedStyle(node).borderTopColor)).toBe(teamBefore);
+  expect(await teamChip.evaluate((node) => getComputedStyle(node).borderTopColor)).toBe(target);
 
   const remove = page.getByRole('button', { name: 'Remove default team' });
   const removeIcon = remove.locator('svg');
@@ -245,9 +252,12 @@ test('Account hover borders and Default Team remove icon match the supplied refe
 
   await page.getByRole('link', { name: 'Billing Information', exact: true }).click();
   const company = page.getByRole('textbox', { name: 'Company Name' });
-  const companyBefore = await borderColor(company);
   await company.hover();
-  expect(await borderColor(company)).toBe(companyBefore);
+  expect(await company.evaluate((node) => getComputedStyle(node).borderTopColor)).toBe(target);
+
+  const country = page.getByRole('combobox', { name: 'Country or Region' });
+  await country.hover();
+  expect(await country.evaluate((node) => getComputedStyle(node).borderTopColor)).toBe(target);
 });
 
 test('account settings matches the reference card geometry and footer alignment', async ({ page }) => {
