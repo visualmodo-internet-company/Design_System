@@ -68,6 +68,19 @@ test('source and generated preview exclude account-export identifiers and secret
   const forbidden = [/contact-\d{8}/, /team_[a-zA-Z0-9]{18,}/, /dpl_[a-zA-Z0-9]{18,}/, /ghp_[A-Za-z0-9]{20}/];
   for (const file of [...source, ...walk('preview').filter((name) => name.endsWith('.html'))]) for (const pattern of forbidden) assert(!pattern.test(text(file)), file);
 });
+test('project switcher preserves the supplied Vercel picker contract', () => {
+  const source = text('src/blocks/project-switcher.tsx');
+  const styles = text('src/styles/system.css');
+  assert(source.includes('placeholder="Find Project..."'));
+  assert(source.includes('Create Project'));
+  assert(source.includes('ChevronsUpDown'));
+  assert(styles.includes('.ds-project-popover { z-index: var(--ds-z-dialog); width: min(440px'));
+  assert(styles.includes('.ds-project-search-row { display: flex; align-items: center; height: 52px'));
+  assert(styles.includes('.ds-project-option { display: flex; align-items: center; gap: var(--ds-space-3); width: 100%; height: var(--ds-space-10)'));
+  assert(styles.includes('background: transparent'));
+  assert(styles.includes('.ds-project-create-wrap { padding: var(--ds-space-2); border-top: var(--ds-border-width) solid var(--ds-border); }'));
+});
+
 test('sidebar user menu preserves the supplied Vercel account menu contract', () => {
   const source = text('src/blocks/user-menu.tsx');
   const styles = text('src/styles/system.css');
