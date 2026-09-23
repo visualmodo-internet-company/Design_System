@@ -458,12 +458,7 @@
   .ds-account-invoices .ds-select-trigger,
   .ds-account-token-page .ds-input,
   .ds-account-token-page .ds-select-trigger { font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-regular); }
-  .ds-account-card .ds-input:hover,
-  .ds-account-card .ds-select-trigger:hover,
-  .ds-account-standalone .ds-input:hover,
-  .ds-account-standalone .ds-select-trigger:hover,
-  .ds-account-token-page .ds-input:hover,
-  .ds-account-token-page .ds-select-trigger:hover { border-color: var(--ds-border-strong); }
+  .ds-account-hover-field:hover { border-color: var(--ds-border-strong); }
   .ds-account-danger-action { width: 100%; display: flex; justify-content: flex-end; }
 
   .ds-account-avatar-card .ds-account-card-body { min-height: 120px; flex-direction: row; align-items: flex-start; justify-content: space-between; }
@@ -473,7 +468,9 @@
   .ds-account-input-group > span { display: flex; align-items: center; align-self: stretch; padding: 0 var(--ds-space-3); border-right: var(--ds-border-width) solid var(--ds-border); color: var(--ds-muted-foreground); font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); }
   .ds-account-input-group .ds-input { flex: 1; min-width: 0; height: 100%; border: 0; border-radius: 0; outline: none; }
   .ds-account-team-chip { width: min(100%, 304px); height: var(--ds-control-md); display: flex; align-items: center; gap: var(--ds-space-2); padding: 0 var(--ds-space-2); border: var(--ds-border-width) solid var(--ds-account-input-border); border-radius: var(--ds-radius-md); background: var(--ds-input); font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); font-weight: var(--ds-weight-regular); }
-  .ds-account-team-chip > :last-child { margin-left: auto; color: var(--ds-muted-foreground); }
+  .ds-account-team-remove { width: var(--ds-space-6); height: var(--ds-space-6); margin-left: auto; display: grid; place-content: center; flex: none; padding: 0; border: 0; border-radius: var(--ds-radius-sm); background: transparent; color: var(--ds-muted-foreground); }
+  .ds-account-team-remove:hover { color: var(--ds-foreground); background: transparent; }
+  .ds-account-team-remove svg { width: var(--ds-space-4); height: var(--ds-space-4); stroke-width: 1.5; }
   .ds-account-list-row { display: flex; align-items: center; gap: var(--ds-space-2); min-height: 48px; padding: var(--ds-space-2) var(--ds-space-3); border: var(--ds-border-width) solid var(--ds-border); border-radius: var(--ds-radius-md); background: var(--ds-background); font-size: var(--ds-font-body); line-height: var(--ds-leading-label); letter-spacing: var(--ds-tracking-ui-14); }
   .ds-account-copy-field { width: max-content; max-width: 100%; display: flex; align-items: center; height: var(--ds-control-md); overflow: hidden; border: var(--ds-border-width) solid var(--ds-border); border-radius: var(--ds-radius-md); background: var(--ds-input); }
   .ds-account-copy-field code { padding: 0 var(--ds-space-3); font-family: var(--ds-font-mono); font-size: var(--ds-font-caption); }
