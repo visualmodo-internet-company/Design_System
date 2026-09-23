@@ -86,12 +86,13 @@ The supplied account sidebar screenshots define a distinct user dropdown:
 * The final status area is separated by a full-width divider and shows All systems normal with a blue dot on the right.
 * The outer menu uses the 12 px popover radius and subtle border.
 
-## Account Settings hover and remove-control observations
+## Input hover and active border observations
 
-The later Settings comparison clarifies two interaction details:
+The later dashboard comparison clarifies that the stronger input border is a global interaction state, not a Display Name exception:
 
-* Only the standalone Display Name input visibly strengthens its border on hover.
-* Username's grouped field, Default Team chip, billing fields and other Account form controls keep the same base border on hover.
+* Standard text inputs, search controls, selects and grouped form controls strengthen their border on hover and focus/open states.
+* The dark reference border measures approximately `#3d3d3d` in the supplied screenshots and is exposed as `--ds-control-border-hover`.
+* Base borders remain subtle so the interactive state is visible without changing control size.
 * Default Team uses a real 16 px X glyph with a light 1.5 stroke, centered in a small transparent hit area at the far right of the chip.
 * The X itself changes foreground emphasis on hover but does not introduce a filled hover surface.
 
