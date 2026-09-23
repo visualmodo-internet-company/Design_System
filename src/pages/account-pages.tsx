@@ -14,6 +14,7 @@ import {
   Search,
   ShieldCheck,
   Smartphone,
+  X,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -127,7 +128,7 @@ function SettingsPage({ onAction }: { onAction: Notify }) {
         description="Please enter your full name, or a display name you are comfortable with."
         footer={<FooterLine action={<Button size="sm" disabled={!displayName.trim()} onClick={() => onAction('Display name saved locally for the demo.')}>Save</Button>}>Please use 32 characters at maximum.</FooterLine>}
       >
-        <Input aria-label="Display Name" value={displayName} maxLength={32} onChange={(event) => setDisplayName(event.target.value)} className="ds-account-short-field" />
+        <Input aria-label="Display Name" value={displayName} maxLength={32} onChange={(event) => setDisplayName(event.target.value)} className="ds-account-short-field ds-account-hover-field" />
       </AccountCard>
 
       <AccountCard
@@ -146,7 +147,7 @@ function SettingsPage({ onAction }: { onAction: Notify }) {
         description="Your default team will be used when you make a request without specifying a particular team. It is also selected when you first navigate to the dashboard."
         footer={<FooterLine action={<Button size="sm" disabled>Save</Button>}><a className="ds-link" href="#default-team" onClick={(event) => event.preventDefault()}>Learn more about Default Teams <ExternalLink aria-hidden="true" /></a></FooterLine>}
       >
-        <div className="ds-account-team-chip"><span className="ds-team-avatar-mark" aria-hidden="true" /><span>{account.team}</span><span aria-hidden="true">×</span></div>
+        <div className="ds-account-team-chip"><span className="ds-team-avatar-mark" aria-hidden="true" /><span>{account.team}</span><button type="button" className="ds-account-team-remove" aria-label="Remove default team" onClick={() => onAction('Default team removal demonstrated locally.')}><X aria-hidden="true" /></button></div>
       </AccountCard>
 
       <AccountCard
