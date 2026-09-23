@@ -245,7 +245,7 @@
   .ds-nav-link[aria-current='page'] { background: var(--ds-active); color: var(--ds-foreground); }
   .ds-nav-divider { height: var(--ds-border-width); background: var(--ds-border-subtle); border: 0; margin: var(--ds-space-1) 0; }
   .ds-sidebar-foot { display: flex; gap: var(--ds-space-1); align-items: center; padding: var(--ds-space-2); margin-top: auto; }
-  .ds-user-trigger { border: 0; background: transparent; min-height: var(--ds-control-md); padding: 0 var(--ds-space-2); border-radius: var(--ds-radius-full); display: flex; align-items: center; gap: var(--ds-space-2); min-width: 0; flex: 1; text-align: left; }
+  .ds-user-trigger { border: 0; background: transparent; min-height: var(--ds-control-md); padding: 0 var(--ds-space-2); border-radius: var(--ds-radius-md); display: flex; align-items: center; gap: var(--ds-space-2); min-width: 0; flex: 1; text-align: left; }
   .ds-user-trigger:hover { background: var(--ds-hover); }
   .ds-user-trigger > svg { width: var(--ds-space-4); height: var(--ds-space-4); color: var(--ds-muted-foreground); }
   .ds-sidebar-toggle { position: absolute; right: calc(-1 * var(--ds-space-3)); top: 50%; width: var(--ds-space-6); height: var(--ds-space-6); display: grid; place-content: center; border: var(--ds-border-width) solid var(--ds-border-strong); border-radius: var(--ds-radius-full); background: var(--ds-card); opacity: 0; transition: opacity var(--ds-duration-fast) var(--ds-ease-panel); }
