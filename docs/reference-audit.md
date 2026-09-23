@@ -60,6 +60,19 @@ The later supplied team switcher HTML confirms the desktop composition used by t
 
 The reference also separates the team label action from the scope switcher trigger. That separation is part of the reusable shell contract and should not be collapsed back into one full-width hover button.
 
+## Sidebar user menu observations
+
+The supplied account sidebar screenshots define a distinct user dropdown:
+
+* Desktop menu width is approximately 330 px and may extend beyond the 256 px sidebar.
+* The menu opens above the footer trigger with an 8 px visual gap.
+* The top profile row contains account name and email on the left and the Settings icon on the right.
+* Standard rows are approximately 40 px high with 6 px hover radius and right-aligned icons.
+* The item order is Feedback, Home Page, Changelog, Help, Docs and Log Out.
+* Upgrade to Pro is a full-width 36 px primary action inside the menu.
+* The final status area is separated by a full-width divider and shows All systems normal with a blue dot on the right.
+* The outer menu uses the 12 px popover radius and subtle border.
+
 ## Account Settings measured geometry
 
 A direct comparison between the supplied Settings reference and the first implementation exposed several measurable mismatches. The corrected account contract records the reference geometry rather than inheriting generic card defaults:
